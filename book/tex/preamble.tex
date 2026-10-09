@@ -1,0 +1,248 @@
+% ---- 한글 조판: kotex(xetexko) ----
+\usepackage{kotex}
+% Bundle the OFL fonts used by the book so sandboxed XeTeX renders are stable.
+\setmainfont[Path=tex/fonts/]{NanumMyeongjo.ttc}
+\setsansfont[Path=tex/fonts/]{NanumGothic.ttc}
+\setmonofont[Path=tex/fonts/]{D2Coding.ttc}
+\setmainhangulfont[Path=tex/fonts/]{NanumMyeongjo.ttc}
+\setsanshangulfont[Path=tex/fonts/]{NanumGothic.ttc}
+\setmonohangulfont[Path=tex/fonts/]{D2Coding.ttc}
+\newfontfamily\latinx{lmroman10-regular.otf}   % 나눔명조에 없는 라틴 확장 문자(é 등)
+% 『시간 고양이』 1권 판면 실측(2026-10-05): 본문 폭 87mm, 쪽당 19줄, 줄 간격 8.0mm(22.7pt), 글자 약 12~12.5pt, 양끝 맞춤
+\makeatletter\renewcommand\normalsize{\@setfontsize\normalsize{12.5pt}{22.7pt}}\makeatother\normalsize
+\linespread{1}
+\setlength{\parindent}{1em}
+\setlength{\parskip}{0pt}
+\setlength{\parfillskip}{0pt plus 0.8\linewidth}   % 문단 끝 줄이 너무 짧지 않게(최소 약 1/5)
+\setlength{\emergencystretch}{1em}
+% ---- 외톨이 줄·쪽 끝 제목 막기 ----
+\clubpenalty=10000 \widowpenalty=10000 \displaywidowpenalty=10000
+\brokenpenalty=10000
+\raggedbottom
+\usepackage{needspace}
+\usepackage{etoolbox}
+\pretocmd{\section}{\Needspace{5\baselineskip}}{}{}
+\pretocmd{\subsection}{\Needspace{4\baselineskip}}{}{}
+% ---- 머리말·쪽번호 ----
+\usepackage[automark]{scrlayer-scrpage}
+\automark[chapter]{chapter}
+\clearpairofpagestyles
+\ofoot*{\pagemark}
+% 어린이 독서 흐름을 위해 쪽 위 반복 장 제목(머리글)은 표시하지 않는다.
+\ohead{}
+\renewcommand*{\chaptermarkformat}{}
+\setkomafont{pageheadfoot}{\sffamily\small\color{gray}}
+\setkomafont{pagenumber}{\sffamily\small\color{gray}}
+\setkomafont{chapter}{\sffamily\bfseries}
+\setkomafont{section}{\sffamily\bfseries\large}
+\setkomafont{subsection}{\sffamily\bfseries}
+\setkomafont{subsubsection}{\sffamily\bfseries}
+% ---- 차례: 장 번호 고정 폭 ----
+\newcommand{\tocnum}[1]{\makebox[3.3em][l]{#1}}
+% ---- 로그 블록(ASCII 화면) ----
+\usepackage{fancyvrb}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric}
+\usepackage{eso-pic}
+\definecolor{memoBg}{gray}{0.96}
+\definecolor{memoLine}{gray}{0.48}
+\definecolor{memoText}{gray}{0.16}
+\newcommand{\memobox}[2]{%
+  \par\medskip\noindent\fcolorbox{memoLine}{memoBg}{%
+    \begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule}
+    {\sffamily\bfseries\fontsize{11pt}{14pt}\selectfont\color{memoText}#1}\par
+    \vspace{1.5mm}
+    {\normalfont\fontsize{11.5pt}{18pt}\selectfont\color{black}#2}
+    \end{minipage}}\par\vspace{4mm}}
+\newcommand{\logfont}{\linespread{1}\fontsize{10.8}{15.2}\selectfont}
+% ---- 메신저·앱 알림: 바깥 테두리 없이, 읽기 쉬운 회색 말풍선 ----
+\newenvironment{chatthread}{%
+  \par\Needspace{5\baselineskip}\medskip\noindent\begin{center}%
+  \begin{minipage}{.90\linewidth}\vspace{1.5mm}%
+}{%
+  \vspace{1.5mm}\end{minipage}\end{center}\par\medskip%
+}
+\newcommand{\chatroomtitle}[1]{%
+  {\noindent\hspace*{\dimexpr.20\linewidth-4.5mm\relax}%
+   \sffamily\footnotesize\color{gray}#1\par}\vspace{1mm}%
+}
+\newcommand{\chatbubble}[2]{%
+  \par\noindent\makebox[\linewidth][r]{%
+  \begin{tikzpicture}
+    \node[anchor=east,rounded corners=3mm,fill=gray!12,inner sep=2.5mm,
+      text width=.80\linewidth,align=left] (bubble)
+      {{\sffamily\footnotesize\color{gray}#1\par}\vspace{.5mm}%
+       \sffamily\fontsize{11.2pt}{15.5pt}\selectfont\color{black}#2};
+    \fill[gray!12] ([xshift=-8mm]bubble.south east) --
+      ([xshift=-2mm]bubble.south east) --
+      ([xshift=-1mm,yshift=-5mm]bubble.south east) -- cycle;
+  \end{tikzpicture}}\par\vspace{.5mm}%
+}
+\newcommand{\appnotice}[2]{%
+  \appnoticefrom{#1}{}{#2}%
+}
+\newcommand{\appnoticefrom}[3]{%
+  \par\addvspace{6mm}\Needspace{5\baselineskip}\noindent\makebox[\linewidth][c]{%
+  \begin{minipage}{.90\linewidth}
+    {\noindent\sffamily\footnotesize\color{gray}#1\par}\vspace{1.5mm}%
+    \noindent\colorbox{gray!12}{\parbox{.78\linewidth}{%
+      \if\relax\detokenize{#2}\relax\else
+        {\sffamily\footnotesize\color{gray}보낸 사람: #2\par}\vspace{1mm}%
+      \fi
+      \sffamily\fontsize{10.8pt}{15pt}\selectfont\color{black}#3}}%
+    \vspace{2mm}%
+  \end{minipage}}\par\addvspace{6mm}%
+}
+\newcommand{\stickynote}[1]{%
+  \par\addvspace{7mm}%
+  \begingroup\setlength{\fboxsep}{3mm}%
+  \noindent\makebox[\linewidth][c]{%
+  \fcolorbox{gray!45}{gray!5}{\begin{minipage}{.78\linewidth}
+    {\sffamily\fontsize{10.5pt}{16.5pt}\selectfont\color{black}#1\par}
+  \end{minipage}}}%
+  \endgroup\par\addvspace{8mm}%
+}
+% ---- 장 첫 쪽 날짜 줄 ----
+\newcommand{\dateline}[1]{\par\noindent{\sffamily\small\color{gray}#1}\par\medskip}
+% ---- 표제지: 가로 제목 + 투명 컷아웃 그림 ----
+\makeatletter
+\renewcommand{\maketitle}{%
+  \begin{titlepage}
+  \thispagestyle{empty}
+  \AddToShipoutPictureBG*{%
+    \AtPageLowerLeft{\hspace*{10mm}\raisebox{-4mm}{\includegraphics[width=114.4mm]{images/title-adventure.png}}}%
+  }%
+  \vspace*{17mm}
+  \begin{center}
+  \makebox[0pt][c]{\sffamily\bfseries\addfontfeatures{FakeBold=6.0}\fontsize{30}{36}\selectfont 곰새코지 돌고래 목소리 사건}\par
+  \vspace{4mm}
+  {\sffamily\fontsize{9.5}{13}\selectfont 이희근\par}
+  \end{center}
+  \end{titlepage}
+}
+\makeatother
+% ---- 장 도비라 ----
+\usepackage{graphicx}
+\newcommand{\bodystyle}{\setlength{\parindent}{1em}\setlength{\parskip}{0pt}\normalsize}
+\newcommand{\fullpageimage}[1]{%
+  \clearpage\thispagestyle{empty}%
+  \AddToShipoutPictureBG*{%
+    \AtPageLowerLeft{\includegraphics[width=\paperwidth,height=\paperheight]{#1}}%
+  }%
+  \null\clearpage}
+\newcommand{\chapterartpage}[2]{%
+  \IfFileExists{#1}{\fullpageimage{#1}}%
+    {\IfFileExists{#2}{\fullpageimage{#2}}%
+      {\clearpage\thispagestyle{empty}\vspace*{\fill}\begin{center}\fbox{\parbox[c][0.8\textheight][c]{0.8\textwidth}{\centering\color{gray}\small 장 전면 그림이 들어갈 자리}}\end{center}\vspace*{\fill}\clearpage}}}
+\newcommand{\dobira}[4]{%
+  \clearpage\thispagestyle{plain.scrheadings}\bodystyle%
+  \addcontentsline{toc}{chapter}{\tocnum{#1}#2}%
+  \markboth{#2}{#2}%
+  \vspace*{42mm}%
+  {\centering\sffamily{\small #1}\par\vspace{2mm}{\fontsize{19}{27}\selectfont\bfseries #2}\par}%
+  \vspace{3mm}%
+  \chapterartpage{#4}{#3}}
+% ---- 부록(뒷부분): 들여쓰기 없이 문단 사이 띄우기 ----
+\newcommand{\backmatterstyle}{\setlength{\parindent}{0pt}\setlength{\parskip}{0.45em plus 0.1em}\backmattersize}
+% ---- 판권: 맨 마지막 짝수 쪽 아래 ----
+\newcommand{\colophonstart}{\clearpage\thispagestyle{empty}\vspace*{\fill}\begingroup\small\setlength{\parindent}{0pt}\setlength{\parskip}{0.5em}\linespread{1.3}\selectfont}
+\newcommand{\colophonend}{\par\endgroup}
+% ---- 표: A5 폭 안에 들어오게 ----
+\setlength{\tabcolsep}{3pt}
+\AtBeginEnvironment{longtable}{\small\linespread{1.2}\selectfont}
+
+% ---- 권말: 본문보다 작은 글자(11pt/18pt) ----
+\newcommand{\backmattersize}{\fontsize{10.5pt}{16.5pt}\selectfont}
+
+% ---- 차례 한 쪽에 ----
+\RedeclareSectionCommand[tocbeforeskip=1pt plus 1pt]{chapter}
+\setkomafont{chapterentry}{\normalfont\sffamily\small}
+\setkomafont{chapterentrypagenumber}{\normalfont\sffamily\small}
+\AfterTOCHead{\small\linespread{1}\selectfont}
+% ---- 앞부분 빈 쪽 줄이기(차례 다음 바로 시작) ----
+\AtBeginDocument{\let\cleardoublepage\clearpage}
+\RedeclareSectionCommand[beforeskip=6mm,afterskip=5mm]{chapter}
+\makeatletter\renewcommand\mainmatter{\clearpage\@mainmattertrue\pagenumbering{arabic}}\makeatother
+% ======== 읽기 쉬운 앞부분: 인물 쪽 ========
+\definecolor{peopleSea}{HTML}{EAF7F7}
+\definecolor{peopleBlue}{HTML}{D9ECFF}
+\definecolor{peopleLine}{HTML}{9CB8C9}
+\definecolor{peopleText}{HTML}{24404F}
+\definecolor{peopleGray}{HTML}{6F7D86}
+\newenvironment{peoplepage}{%
+  \par\setlength{\parindent}{0pt}\setlength{\parskip}{0pt}%
+  \sffamily\fontsize{9.1pt}{12.1pt}\selectfont%
+}{\par}
+\newcommand{\peopleintro}{%
+  \noindent\fcolorbox{peopleLine}{peopleSea}{%
+    \begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule}
+    \sffamily\bfseries\color{peopleText}누가 누구인지 먼저 훑어보기\par
+    \vspace{0.2mm}
+    {\normalfont\footnotesize\color{peopleGray}아이들 · 가족 · 연구소 · 마을 어른들 · 돌고래가 얽히며 사건이 움직입니다.}
+    \end{minipage}}\par\vspace{1.8mm}}
+\newcommand{\persongroup}[1]{%
+  \par\addvspace{2.1mm}%
+  \noindent\colorbox{peopleBlue}{%
+    \makebox[\dimexpr\linewidth-2\fboxsep][l]{\sffamily\bfseries\footnotesize\color{peopleText}\quad #1}}%
+  \par\vspace{0.8mm}}
+\newcommand{\person}[4]{%
+  \par\noindent\fcolorbox{peopleLine}{white}{%
+    \begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule}
+    {\sffamily\bfseries\fontsize{10.7pt}{12.5pt}\selectfont\color{peopleText}#1}%
+    \if\relax\detokenize{#2}\relax\else\hspace{1.5mm}{\sffamily\scriptsize\color{peopleGray}#2}\fi
+    \if\relax\detokenize{#4}\relax\else\hfill{\sffamily\scriptsize\color{peopleGray}소품: #4}\fi\par
+    \vspace{0.2mm}
+    {\normalfont\fontsize{9.1pt}{11.8pt}\selectfont #3}%
+    \end{minipage}}%
+  \par\vspace{0.7mm}}
+\newenvironment{profilepage}{%
+  \par\setlength{\parindent}{0pt}\setlength{\parskip}{0pt}%
+  \sffamily\fontsize{8pt}{10pt}\selectfont%
+}{\par}
+\newcommand{\profileintro}{%
+  {\sffamily\footnotesize\color{peopleGray}사진을 먼저 보고, 이름과 역할만 가볍게 훑어보세요.}\par
+  \vspace{4mm}}
+\newcommand{\profile}[4]{%
+  \begin{minipage}[t]{0.305\linewidth}
+  \centering
+  \fcolorbox{peopleLine}{white}{\includegraphics[width=20mm,height=20mm]{#1}}\par
+  \vspace{0.6mm}
+  {\sffamily\bfseries\fontsize{10pt}{11.5pt}\selectfont\color{peopleText}#2}\par
+  \if\relax\detokenize{#3}\relax\else{\sffamily\scriptsize\color{peopleGray}#3\par}\fi
+  \vspace{0.3mm}
+  {\normalfont\fontsize{7pt}{8.4pt}\selectfont #4\par}
+  \end{minipage}}
+\newcommand{\profilecompact}[4]{%
+  \begin{minipage}[t]{0.31\linewidth}
+  \centering
+  \fcolorbox{peopleLine}{white}{\includegraphics[width=25mm,height=25mm]{#1}}\par
+  \vspace{0.6mm}
+  {\sffamily\bfseries\fontsize{10pt}{11.8pt}\selectfont\color{peopleText}#2}\par
+  \if\relax\detokenize{#3}\relax\else{\sffamily\scriptsize\color{peopleGray}#3\par}\fi
+  \vspace{0.4mm}
+  {\normalfont\fontsize{7.8pt}{9.5pt}\selectfont #4\par}
+  \end{minipage}}
+\newcommand{\profilehero}[4]{%
+  \begin{minipage}[t]{0.31\linewidth}
+  \centering
+  \fcolorbox{peopleLine}{white}{\includegraphics[width=25mm,height=25mm]{#1}}\par
+  \vspace{0.8mm}
+  {\sffamily\bfseries\fontsize{10.8pt}{12.5pt}\selectfont\color{peopleText}#2}\par
+  \if\relax\detokenize{#3}\relax\else{\sffamily\fontsize{8.8pt}{10.5pt}\selectfont\color{peopleGray}#3\par}\fi
+  \vspace{0.7mm}
+  {\normalfont\fontsize{7.8pt}{9.8pt}\selectfont #4\par}
+  \end{minipage}}
+% ======== 이야기 지도형 차례 ========
+\usepackage{tocbasic}
+\DeclareTOCStyleEntry[
+  beforeskip=4pt plus 1.5pt,
+  entryformat=\normalfont\sffamily\fontsize{11pt}{19pt}\selectfont,
+  pagenumberformat=\normalfont\sffamily\fontsize{10.5pt}{19pt}\selectfont\color{gray},
+  linefill=\hfill,
+  indent=0pt, numwidth=0pt
+]{tocline}{chapter}
+\definecolor{tocsea}{HTML}{16879A}
+\renewcommand{\tocnum}[1]{\makebox[3.8em][l]{\textcolor{tocsea}{\large\textbullet}\hspace{0.35em}{\color{gray}\footnotesize #1}}}
+\newcommand{\tocgroup}[1]{\addvspace{5mm}{\sffamily\small\bfseries\color{tocsea}\raisebox{0.1ex}{\textbullet}\hspace{0.5em}#1}\par\addvspace{1.8mm}}
+\AfterTOCHead[toc]{\enlargethispage{10mm}}

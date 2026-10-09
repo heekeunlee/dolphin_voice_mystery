@@ -1,0 +1,18 @@
+# Local/editor artifacts
+.DS_Store
+**/.DS_Store
+**/.Rhistory
+.claude/
+
+# Quarto and TeX build intermediates
+book/.quarto/
+book/*.aux
+book/*.log
+book/*.out
+book/*.toc
+book/*.fls
+book/*.fdb_latexmk
+book/*.synctex.gz
+
+# Duplicate older proof at the workspace root; current proof lives in book/_output/
+/수정된-원고.pdf

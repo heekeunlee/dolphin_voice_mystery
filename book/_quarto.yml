@@ -1,0 +1,64 @@
+project:
+  type: book
+  output-dir: _output
+
+book:
+  title: "곰새코지 돌고래 목소리 사건"
+  subtitle: ""
+  author: "이희근"
+  publisher: "에르고스피어"
+  output-file: "dolphin-said-proof"
+  language: ko
+  chapters:
+    - index.qmd
+    - src/front-02-map.qmd
+    - src/ch01.qmd
+    - src/ch02.qmd
+    - src/ch03.qmd
+    - src/ch04.qmd
+    - src/ch05.qmd
+    - src/ch06.qmd
+    - src/ch07.qmd
+    - src/ch08.qmd
+    - src/ch09.qmd
+    - src/back-02-science.qmd
+    - src/back-03-glossary.qmd
+    - src/back-06-afterword.qmd
+    - src/back-99-colophon.qmd
+
+lang: ko
+from: markdown-implicit_header_references
+number-sections: false
+toc: true
+toc-depth: 1
+toc-title: "차례"
+filters:
+  - filters/dobira.lua
+
+format:
+  pdf:
+    pdf-engine: xelatex
+    documentclass: scrbook
+    classoption:
+      - twoside
+      - open=any
+      - fontsize=12.5pt
+      - headings=small
+    geometry:
+      - paperwidth=148mm
+      - paperheight=210mm
+      - textwidth=87mm
+      - inner=34mm
+      - top=24mm
+      - textheight=148.5mm
+      - headsep=7mm
+      - footskip=14mm
+    include-in-header: tex/preamble.tex
+    colorlinks: false
+    links-as-notes: false
+    keep-tex: true
+    columns: 30
+  epub:
+    css: css/epub.css
+    toc: true
+    epub-chapter-level: 1

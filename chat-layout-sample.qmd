@@ -1,0 +1,79 @@
+---
+format:
+  pdf:
+    pdf-engine: xelatex
+    documentclass: scrartcl
+    classoption: [12pt]
+    geometry:
+      - paperwidth=148mm
+      - paperheight=210mm
+      - textwidth=87mm
+      - left=30.5mm
+      - right=30.5mm
+      - top=24mm
+      - bottom=20mm
+    include-in-header:
+      text: |
+        \usepackage{kotex}
+        \usepackage{xcolor,tikz,fontspec}
+        \setmainfont[Path=book/tex/fonts/]{NanumMyeongjo.ttc}
+        \setsansfont[Path=book/tex/fonts/]{NanumGothic.ttc}
+        \setmonofont[Path=book/tex/fonts/]{D2Coding.ttc}
+        \pagestyle{empty}
+    colorlinks: false
+    papersize: a5
+---
+
+```{=latex}
+\noindent{\sffamily\large 메신저 대화 장면 시안}\par\medskip
+\noindent 10시가 넘자 책상 위 휴대폰이 빙글빙글 돌기 시작했다.
+\par\medskip
+\noindent\makebox[\linewidth][c]{%
+  \begin{minipage}{.90\linewidth}
+  \vspace{1.5mm}
+  {\noindent\hspace*{\dimexpr.20\linewidth-4.5mm\relax}%
+   \sffamily\footnotesize\color{gray} 곰새코지 6학년 수다방\par}
+  \vspace{1mm}
+  \noindent\makebox[\linewidth][r]{%
+  \begin{tikzpicture}
+    \node[anchor=east, rounded corners=3mm, fill=gray!12, inner sep=2.5mm,
+      text width=.80\linewidth, align=left] (b1)
+      {{\sffamily\footnotesize\color{gray} 채아 (6월 24일 밤 10:10)\par}\vspace{.5mm}
+       \sffamily\fontsize{11.2pt}{15.5pt}\selectfont
+       야, 고단우! 너 뉴스 나왔어!\\
+       바당이 첫 문장에 네 라벨이 쓰였대!\\
+       연구소 페이지에 찍힌 시간까지 떴어!};
+    \fill[gray!12] ([xshift=-8mm]b1.south east) --
+      ([xshift=-2mm]b1.south east) --
+      ([xshift=-1mm,yshift=-5mm]b1.south east) -- cycle;
+  \end{tikzpicture}
+  }\par
+  \vspace{.5mm}
+  \noindent\makebox[\linewidth][r]{%
+  \begin{tikzpicture}
+    \node[anchor=east, rounded corners=3mm, fill=gray!12, inner sep=2.5mm,
+      text width=.80\linewidth, align=left] (b2)
+      {{\sffamily\footnotesize\color{gray} 채아 (6월 24일 밤 10:11)\par}\vspace{.5mm}
+       \sffamily\fontsize{11.2pt}{15.5pt}\selectfont
+       근데 새벽 3시에 깨어 있었냐?\\
+       너 9시면 자잖아.};
+    \fill[gray!12] ([xshift=-8mm]b2.south east) --
+      ([xshift=-2mm]b2.south east) --
+      ([xshift=-1mm,yshift=-5mm]b2.south east) -- cycle;
+  \end{tikzpicture}
+  }\par
+  \vspace{1.5mm}
+  \end{minipage}}
+\par\medskip
+일곱 명뿐인 6학년 단톡방이 밀려 올라갔다. 그 사이로 앱 알림도 끼어들었다.
+\par\medskip
+\noindent\makebox[\linewidth][c]{%
+  \begin{minipage}{.90\linewidth}
+  \vspace{2mm}
+  {\noindent\sffamily\footnotesize\color{gray} 귀 기울임 · AI 음성 분석 자동 알림\par}
+  \vspace{1.5mm}
+  \noindent\colorbox{gray!12}{\parbox{.78\linewidth}{\sffamily\fontsize{10.8pt}{15pt}\selectfont
+  축하합니다! 회원님의 라벨이 바당이 첫 문장의 근거로 쓰였습니다.}}
+  \vspace{2mm}
+  \end{minipage}}
+```

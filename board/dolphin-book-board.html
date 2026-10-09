@@ -1,0 +1,358 @@
+<title>돌려줘 기획 보드</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a single reading column like a field notebook; spectrogram strip as the recurring motif, chapter track as the centerpiece */
+:root{
+  --bg:#eef3f4;
+  --paper:#fbfdfd;
+  --ink:#10283a;
+  --muted:#4f6676;
+  --line:#c9d7dc;
+  --sea:#1f6f78;
+  --tewak:#e2671c;
+  --tewak-soft:#fbe3d3;
+  --sea-soft:#d9ecee;
+  --f-display:"Gowun Batang","Nanum Myeongjo",serif;
+  --f-body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0b1a24;--paper:#10232f;--ink:#e3eef1;--muted:#9bb2bd;--line:#24404f;
+  --sea:#5fb8c1;--tewak:#ff8a45;--tewak-soft:#3a2416;--sea-soft:#163541;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0b1a24;--paper:#10232f;--ink:#e3eef1;--muted:#9bb2bd;--line:#24404f;
+  --sea:#5fb8c1;--tewak:#ff8a45;--tewak-soft:#3a2416;--sea-soft:#163541;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.7;padding:0 16px}
+.wrap{max-width:980px;margin:0 auto;padding-block:40px 64px;display:grid;gap:56px}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1.3}
+h2{font-size:1.55rem}
+h3{font-size:1.08rem}
+p{margin:0}
+.eyebrow{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--sea)}
+.muted{color:var(--muted)}
+section{display:grid;gap:20px}
+.sec-head{display:grid;gap:6px}
+.hero{display:grid;gap:22px}
+.hero h1{font-size:clamp(2rem,5.4vw,3.3rem);font-weight:700}
+.hero h1 .stop{color:var(--tewak)}
+.caption{font-family:var(--f-mono);font-size:.8rem;color:var(--muted)}
+.subtitle{font-size:1.02rem;color:var(--muted)}
+.logline{font-family:var(--f-display);font-size:1.12rem;line-height:1.85;max-width:62ch;border-left:3px solid var(--tewak);padding-left:16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-size:.8rem;padding:4px 10px;border:1px solid var(--line);border-radius:999px;background:var(--paper)}
+.spectro{width:100%;height:auto;display:block;border-radius:6px;background:var(--paper);border:1px solid var(--line)}
+.twist{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.twist > div{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:18px;display:grid;gap:8px;min-width:0}
+.twist .key{border-color:var(--tewak);background:var(--tewak-soft)}
+.message{font-family:var(--f-display);font-size:1.05rem}
+.cast{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+.person{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:14px 16px;display:grid;gap:4px;align-content:start;min-width:0}
+.person .name{font-weight:600}
+.person .role{font-size:.78rem;font-family:var(--f-mono);color:var(--sea)}
+.person p{font-size:.88rem;color:var(--muted)}
+.person.lead{grid-column:span 2;border-color:var(--sea)}
+@media (max-width:520px){.person.lead{grid-column:auto}}
+.dolphins{font-size:.88rem;color:var(--muted)}
+.acts{display:grid;gap:22px}
+.act{display:grid;gap:10px}
+.act-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px}
+.act-head h3{font-size:1.02rem}
+.clock{font-family:var(--f-mono);font-size:.76rem;color:var(--tewak);font-variant-numeric:tabular-nums}
+.chapters{list-style:none;margin:0;padding:0;display:grid;gap:0;border-left:2px solid var(--line);margin-left:6px}
+.ch{position:relative;padding:8px 0 10px 22px;display:grid;grid-template-columns:3.2rem 1fr;gap:4px 12px;min-width:0}
+.ch::before{content:"";position:absolute;left:-7px;top:15px;width:12px;height:12px;border-radius:50%;background:var(--bg);border:2px solid var(--sea)}
+.ch.peak::before{background:var(--tewak);border-color:var(--tewak)}
+.ch.done::before{background:var(--sea)}
+.ch .no{font-family:var(--f-mono);font-size:.8rem;color:var(--muted);padding-top:2px}
+.ch .t{font-weight:600}
+.ch .d{grid-column:2;font-size:.88rem;color:var(--muted)}
+.tag{display:inline-block;font-size:.7rem;font-family:var(--f-mono);padding:1px 7px;border-radius:4px;margin-left:6px;vertical-align:2px;background:var(--sea-soft);color:var(--sea)}
+.tag.hot{background:var(--tewak-soft);color:var(--tewak)}
+.tag.wip{background:transparent;border:1px dashed var(--tewak);color:var(--tewak)}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:.8rem;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.dot{width:10px;height:10px;border-radius:50%;border:2px solid var(--sea);display:inline-block}
+.dot.f{background:var(--sea)}.dot.p{background:var(--tewak);border-color:var(--tewak)}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:18px;display:grid;gap:12px;align-content:start;min-width:0}
+.panel ul{margin:0;padding-left:1.1em;display:grid;gap:6px;font-size:.9rem}
+.panel li b{font-weight:600}
+table{border-collapse:collapse;width:100%;font-size:.86rem}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;font-size:.78rem;color:var(--muted)}
+td.num{font-family:var(--f-mono);font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+.tbl{overflow-x:auto}
+.fact{font-size:.86rem}
+.fact cite{font-style:normal;font-family:var(--f-mono);font-size:.74rem;color:var(--sea);display:block}
+.log{font-family:var(--f-mono);font-size:.8rem;background:var(--sea-soft);border-radius:6px;padding:12px 14px;white-space:pre;overflow-x:auto;color:var(--ink)}
+.series{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.vol{border-top:3px solid var(--sea);background:var(--paper);border-radius:0 0 8px 8px;padding:14px 16px;display:grid;gap:6px;align-content:start}
+.vol.now{border-top-color:var(--tewak)}
+.vol .n{font-family:var(--f-mono);font-size:.76rem;color:var(--muted)}
+.vol p{font-size:.86rem;color:var(--muted)}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.step{display:grid;grid-template-columns:1.6rem 1fr auto;gap:10px;align-items:baseline;padding:10px 14px;background:var(--paper);border:1px solid var(--line);border-radius:8px}
+.step .s{font-family:var(--f-mono);font-size:.85rem}
+.step.ok .s{color:var(--sea)}
+.step.wip{border-color:var(--tewak)}
+.step.wip .s{color:var(--tewak)}
+.step.todo{opacity:.72}
+.step .m{font-size:.78rem;color:var(--muted);font-family:var(--f-mono);text-align:right}
+.metrics{display:flex;flex-wrap:wrap;gap:10px}
+.metric{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:10px 14px;display:grid;min-width:130px}
+.metric b{font-family:var(--f-mono);font-size:1.15rem;font-variant-numeric:tabular-nums}
+.metric span{font-size:.76rem;color:var(--muted)}
+.bar{height:8px;border-radius:999px;background:var(--line);overflow:hidden}
+.bar i{display:block;height:100%;background:var(--sea);border-radius:999px}
+footer{font-size:.78rem;color:var(--muted);border-top:1px solid var(--line);padding-top:16px}
+a{color:var(--sea)}
+:focus-visible{outline:2px solid var(--tewak);outline-offset:2px}
+</style>
+
+<div class="wrap">
+
+  <header class="hero">
+    <div class="eyebrow">「곰새코지 바다 지도」 1권 · 기획 보드 · 2026-10-03 기준</div>
+    <h1>돌고래가 말했다, 돌려줘<span class="stop">.</span></h1>
+    <p class="subtitle">영문 가제 <i>What the Dolphin Didn't Say</i> · 초등 고학년 해양 미스터리</p>
+    <p class="logline">2033년 제주 바닷마을 곰새코지. 연구소 AI가 남방큰돌고래 소리를 처음 ‘번역’한 문장 “돌려줘.”가 생중계 자막으로 뜨고, 그 아래 열두 살 고단우의 라벨러 아이디가 찍힌다. 그런데 단우는 그 라벨을 붙인 기억이 없다. 잠든 사이 돌아간 자기 꼼수 프로그램이 붙였기 때문이다.</p>
+    <div class="chips">
+      <span class="chip">초등 5~6학년 전용</span>
+      <span class="chip">17장 · 본문 약 6~7만 자</span>
+      <span class="chip">부가기호 73810 · 정가 14,000원</span>
+      <span class="chip">2027년 3월 말 출간 목표</span>
+      <span class="chip">교보 POD · 국내 전자책 · Google Play · Amazon KDP 9–12</span>
+      <span class="chip">출판사 에르고스피어</span>
+    </div>
+    <svg class="spectro" viewBox="0 0 960 120" role="img" aria-label="휘슬 윤곽 U-D-U-F를 그린 스펙트로그램 모양">
+      <g stroke="var(--line)" stroke-width="1">
+        <line x1="0" y1="30" x2="960" y2="30"/><line x1="0" y1="60" x2="960" y2="60"/><line x1="0" y1="90" x2="960" y2="90"/>
+      </g>
+      <g fill="none" stroke-linecap="round">
+        <path d="M60 92 C110 30 150 28 190 54 C230 82 260 96 300 40 C330 0 360 50 400 50" stroke="var(--sea)" stroke-width="4"/>
+        <path d="M500 92 C550 30 590 28 630 54 C670 82 700 96 740 40 C770 0 800 50 840 50" stroke="var(--tewak)" stroke-width="4"/>
+      </g>
+      <g font-family="IBM Plex Mono, monospace" font-size="12" fill="var(--muted)">
+        <text x="60" y="114">W-07 · 6월 4일</text>
+        <text x="500" y="114">W-07 · 6월 13일 이후 (꼭대기 낮아짐, 폭 좁아짐)</text>
+        <text x="880" y="24" text-anchor="end">kHz ↑</text>
+      </g>
+    </svg>
+    <p class="caption">같은 돌고래는 언제나 같은 모양의 휘슬을 낸다. 이 작품의 반전은 이 한 줄의 과학에서 나온다.</p>
+  </header>
+
+  <section>
+    <div class="sec-head"><div class="eyebrow">Core</div><h2>반전과 메시지</h2></div>
+    <div class="twist">
+      <div class="key">
+        <h3>핵심 반전 (7장)</h3>
+        <p>“돌려줘.”는 돌고래의 말이 아니었다. 단우의 봇이 붙인 ‘분리 위협’이 바당이의 넷째 칸을 지나 만들어진 오역이었다. 그 소리는 상황과 상관없이 늘 같은 모양으로 반복되는 <b>이름(시그니처 휘슬)</b> 같은 것이었다. 누구의 이름인지는 끝까지 모른다.</p>
+      </div>
+      <div>
+        <h3>반전 뒤의 반전 (8→10장)</h3>
+        <p>“새끼가 정말 없어졌으니 결국 AI가 맞힌 거 아니냐?” 단우는 새끼가 멀쩡하던 6월 4일에도 봇이 똑같이 ‘분리 위협’을 찍은 기록으로 답한다. 봇이 잰 건 새끼가 아니라 배였다.</p>
+      </div>
+      <div>
+        <h3>본문에 쓰지 않는 한 줄 메시지</h3>
+        <p class="message">데이터는 사람이 붙인 이름표로 만들어진다. 모르는 건 모른다고 쓸 때 진짜 듣기가 시작된다.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><div class="eyebrow">Cast</div><h2>인물</h2><p class="muted">악당은 없다. 어른들의 사정은 아이가 보고 듣는 만큼만 나온다.</p></div>
+    <div class="cast">
+      <div class="person lead">
+        <span class="role">주인공 · 12세 · 6학년</span>
+        <span class="name">고단우 <span class="muted">danu_0101</span></span>
+        <p>한 달째 지켜 온 시민 라벨러 리더보드 1위. 그 1위는 잠든 사이 밤마다 이삼백 개씩 라벨을 붙인 ‘라벨봇’ 덕분이다. 숫자만 믿고 바다엔 관심이 없다. 긴장하면 책상에 0과 1을 두드린다.</p>
+      </div>
+      <div class="person"><span class="role">할머니 · 76세 · 상군 해녀</span><span class="name">현덕순</span><p>숨비소리만 듣고 누가 올라왔는지 안다. 올해가 마지막 물질. “물때 봐야 알주.” 끝내 “거기까진 나도 모른다”를 말하게 된다.</p></div>
+      <div class="person"><span class="role">엄마 · 간호사</span><span class="name">부선영</span><p>야간 근무가 잦다. 하고 싶은 말 대신 “밥은?”이라고 묻는다. 쪽지 끝에 “끝나면 전화해.”</p></div>
+      <div class="person"><span class="role">연구소 · 데이터 과학자</span><span class="name">탁은재 박사</span><p>바당이 설계자. 네 번째 칸을 반대했지만 막지 못했다. 답 대신 질문하고, 절정에서 재생 지시를 거부한다.</p></div>
+      <div class="person"><span class="role">연구소장</span><span class="name">봉태원 소장</span><p>눈치 없는 선의의 사람. “좋은 기회잖아요.” 장면마다 다른 돌고래 넥타이.</p></div>
+      <div class="person"><span class="role">친구 · 선장의 딸</span><span class="name">양채아</span><p>‘채아의 돌핀로그’. 아빠를 지키려고 영상을 자르고 ‘(전체)’라고 이름 붙인다. 휴지통의 원본이 사건을 뒤집는다.</p></div>
+      <div class="person"><span class="role">친구 · 5학년</span><span class="name">하안</span><p>“비슷한 말은 있는데 똑같은 말은 없어.” 남의 글에서 틀린 데부터 찾아내는 아이.</p></div>
+      <div class="person"><span class="role">막내 해녀 · 하안이 엄마</span><span class="name">쩐 티 투</span><p>할머니의 숨비소리를 먼저 알아듣는 사람. 새끼 돌고래를 처음 본 목격자.</p></div>
+      <div class="person"><span class="role">현장 기사 · 친척 아님</span><span class="name">오삼촌</span><p>성이 오씨라 포구 아이들이 오삼촌이라 부른다. “엔진 끄면 다 들려.” 그의 아재 개그엔 돌고래가 잠수한다.</p></div>
+    </div>
+    <p class="dolphins"><b>돌고래들</b> · 이장(MR-012, 어디든 끼어드는 덩치) · 반달(지느러미 뒤쪽이 반달처럼 떨어져 나간 어미) · 말젯이(반달의 셋째 새끼, 두 살 남짓) — 할머니가 생김새로 붙인 별명.</p>
+  </section>
+
+  <section>
+    <div class="sec-head"><div class="eyebrow">Plot · 17 chapters</div><h2>줄거리 지도</h2><p class="muted">모든 시계는 7월 16일 토요일로 모인다. 정오 이원 생중계, 새끼 구조, 대회 마감 23:59.</p></div>
+    <div class="legend"><span><i class="dot f"></i>확정</span><span><i class="dot p"></i>반전 · 절정 · 감정 정점</span><span><i class="dot"></i>아웃라인 확정</span></div>
+    <div class="acts">
+      <div class="act">
+        <div class="act-head"><h3>1막 · 오역의 탄생</h3><span class="clock">D-22 → D-15</span></div>
+        <ol class="chapters">
+          <li class="ch done"><span class="no">1장</span><span class="t">「돌려줘.」<span class="tag">확정</span></span><span class="d">생중계 자막 아래 내 아이디. 새벽 3시의 danu_0101은 라벨봇이었다. 연구소의 메시지가 도착한다.</span></li>
+          <li class="ch done"><span class="no">2장</span><span class="t">같은 문장, 다섯 얼굴<span class="tag">확정</span></span><span class="d">마을이 “돌려줘”를 다섯 가지로 읽는다. 연구소 홍보실이 ‘고단우 군’ 실명 출연을 발표한다.</span></li>
+          <li class="ch done"><span class="no">3장</span><span class="t">바당이의 네 칸<span class="tag">확정</span></span><span class="d">듣기 → 나누기 → 짝 맞추기 → 문장 만들기. 단우는 출연을 수락하고, 9,308개 봇 라벨을 열어 볼 권한을 받는다.</span></li>
+          <li class="ch done"><span class="no">4장</span><span class="t">잘라 낸 장면 · 채아<span class="tag">확정</span></span><span class="d">채아는 시위 영상을 잘라 ‘(전체)’라고 올리고, 단우와 절교한다. 6월 12일 원본은 휴지통으로. 비우기는 누르지 않았다.</span></li>
+        </ol>
+      </div>
+      <div class="act">
+        <div class="act-head"><h3>2막 전반 · 비밀과 추적</h3><span class="clock">D-14 → D-9</span></div>
+        <ol class="chapters">
+          <li class="ch done"><span class="no">5장</span><span class="t">test_old<span class="tag">확정</span></span><span class="d">봇이 잰 건 새끼가 아니라 배였다. 단우는 파일 이름을 test_old로 바꿔 숨긴다. “알고 싶으민 낼 새벽 다섯 시. 불턱.”</span></li>
+          <li class="ch done"><span class="no">6장</span><span class="t">불턱<span class="tag">확정</span></span><span class="d">숨비소리는 사람마다 다른 소리. 녹음은 묻고 나서, 거절한 소리는 지운다. 투는 “내 소리, 나는 한 번도 못 들었어.”</span></li>
+          <li class="ch done peak"><span class="no">7장</span><span class="t">문장이 아니라 이름<span class="tag hot">중간 반전</span></span><span class="d">단우가 자기 그래프로 찾는다. W-07은 이름 같은 소리이고, 6월 13일부터 세 배로 늘었다.</span></li>
+        </ol>
+      </div>
+      <div class="act">
+        <div class="act-head"><h3>2막 후반 · 대가와 반박</h3><span class="clock">D-8 → D-2</span></div>
+        <ol class="chapters">
+          <li class="ch done"><span class="no">8장</span><span class="t">맞았잖아요<span class="tag">확정</span></span><span class="d">스스로 고백. 소장의 반격 “분리 위협이 맞았잖아요.” 증거를 가진 사람은 절교한 채아뿐.</span></li>
+          <li class="ch done"><span class="no">9장</span><span class="t">휴지통<span class="tag">확정</span></span><span class="d">채아가 아빠에게 불리한 원본을 넘긴다. 그 안에 새끼가 있다. “살아 있을까?”</span></li>
+          <li class="ch done peak"><span class="no">10장</span><span class="t">모르겠대요<span class="tag hot">통쾌 1</span></span><span class="d">하안의 정직한 통역. 6월 4일 기록으로 “AI가 맞혔다”를 뒤집는다. 태풍이 온다.</span></li>
+          <li class="ch done peak"><span class="no">11장</span><span class="t">정정합니다<span class="tag hot">울컥 1</span></span><span class="d">태풍 밤, 이름을 건 정정문. 올리기 전에 어른에게 먼저 보여 준다. W-07이 뚝 끊긴다.</span></li>
+        </ol>
+      </div>
+      <div class="act">
+        <div class="act-head"><h3>3막 · D-day</h3><span class="clock">7월 15일 → 16일</span></div>
+        <ol class="chapters">
+          <li class="ch done"><span class="no">12장</span><span class="t">바다의 귀<span class="tag">확정</span></span><span class="d">마이크를 회수하고 감지기를 만들어 ‘도와주는 배’ 허락을 받는다. 밤, 재생 장비 상자가 배에 실린다.</span></li>
+          <li class="ch done"><span class="no">13장</span><span class="t">운동장에서 교실 한 칸<span class="tag">확정</span></span><span class="d">7월 16일 아침, 소리와 할머니의 바다 지도로 위치를 좁힌다. 11시 50분, 소장의 재생 지시.</span></li>
+          <li class="ch done peak"><span class="no">14장</span><span class="t">12시 03분<span class="tag hot">절정 · 통쾌 2</span></span><span class="d">탁 박사의 재생 거부. “프로펠러 말고, 엔진까지요.” 정적 속에서 감지기의 ‘미분류-모름’이 방향을 잡는다.</span></li>
+          <li class="ch done"><span class="no">15장</span><span class="t">거기까진 나도 모른다<span class="tag">확정</span></span><span class="d">배를 싫어하던 할머니가 스스로 배에 올라 테왁으로 소등굴을 표시하고 전문가에게 넘긴다. 구조. 악플의 밤, 엄마의 “밥은?” 23시 58분 제출.</span></li>
+        </ol>
+      </div>
+      <div class="act">
+        <div class="act-head"><h3>4막 · 정정과 듣기</h3><span class="clock">7월 18일 → 31일</span></div>
+        <ol class="chapters">
+          <li class="ch done"><span class="no">16장</span><span class="t">잘라 낸 장면들<span class="tag">확정</span></span><span class="d">채아 시점. 자르지 않는 기자회견 생중계, “제가 서둘렀습니다.” 말없는 식탁 위 고지서 두 장. “배는 내가 몰았다.”</span></li>
+          <li class="ch done peak"><span class="no">17장</span><span class="t">투 올라왔다<span class="tag hot">울컥 2 · 2권 훅</span></span><span class="d">감귤의 정체. 할머니가 처음 투의 이름을 부른다. 마지막 숨비소리, 엄마의 수건. “쓸 때마다 물어봐라.” 그날 밤, 이름 없는 소리 셋.</span></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><div class="eyebrow">Design</div><h2>5~6학년을 위한 설계</h2></div>
+    <div class="grid2">
+      <div class="panel">
+        <h3>흥미 장치</h3>
+        <ul>
+          <li><b>첫 쪽 훅</b> · 흰 글자 세 개와 마침표 하나. 그 아래 내 아이디.</li>
+          <li><b>카운트다운</b> · 장 머리마다 D-day. 7월 16일 하루에 세 시계가 겹친다.</li>
+          <li><b>비밀 긴장선</b> · 라벨봇이 들킬까 1장부터 10장까지 조마조마.</li>
+          <li><b>코드의 대칭</b> · 틀린 걸 확신하는 라벨봇 vs 모르면 ‘모름’이라 적는 감지기.</li>
+          <li><b>유머 엔진</b> · 이장의 끼어들기, 소장의 넥타이, 채아의 3초 오프닝, “물때 봐야 알주.”</li>
+          <li><b>보이는 텍스트</b> · AI 로그, 단톡, 라벨링 화면. Kindle에서도 깨지지 않게 ASCII로만.</li>
+        </ul>
+        <div class="log">#A-3318
+03:02:08 | 라벨러 | danu_0101
+03:02:08 | 라벨   | 어미-새끼 분리 위협
+03:02:08 | 관광선 | 있음(80m)</div>
+      </div>
+      <div class="panel">
+        <h3>읽기 쉬움을 지키는 규칙</h3>
+        <ul>
+          <li><b>장마다 측정</b> · 50자 넘는 문장 0개, 짧은 단문 4개 연속 0곳, 대화 30% 안팎.</li>
+          <li><b>5학년 독자 점검</b> · 장마다 개념 이해 테스트 → 퇴고 → 재테스트. 확정본은 장마다 핵심 문항 전부 통과.</li>
+          <li><b>호칭 고정</b> · ‘-장’ 다섯 구분, 오삼촌과 제주어 ‘삼춘’ 구분, 마이크는 장소 이름.</li>
+          <li><b>장당 새 개념 2개, 새 숫자 3개까지</b> · 처음 나올 때 생활 비유 한 줄.</li>
+          <li><b>독자 도우미 2쪽</b> · 본문 앞 「곰새코지 사람들」과 「곰새코지 바다 지도」.</li>
+        </ul>
+        <div class="tbl"><table>
+          <thead><tr><th>교과</th><th>연결</th></tr></thead>
+          <tbody>
+            <tr><td>과학</td><td>물속 소리, 생물과 환경</td></tr>
+            <tr><td>실과 · 정보</td><td>AI와 데이터, 라벨링</td></tr>
+            <tr><td>국어</td><td>매체 자료의 신뢰성, 관점과 해석</td></tr>
+            <tr><td>사회 · 도덕</td><td>제주 해녀문화, 책임과 정직, 동의</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><div class="eyebrow">Evidence</div><h2>사실의 뼈대</h2><p class="muted">픽션은 번역 기술 하나뿐. 나머지는 논문으로 확인한 사실 위에 세운다.</p></div>
+    <div class="grid2">
+      <div class="panel fact"><p>남방큰돌고래도 개체마다 고유한 휘슬이 있다. 구조 중 새끼와 떨어진 어미가 낸 휘슬의 87~100%가 자기 이름 휘슬이었다.</p><cite>Gridley 외 2014 · Marine Mammal Science</cite></div>
+      <div class="panel fact"><p>어미는 자기 새끼가 곁에 있을 때 휘슬을 더 높고 넓게 낸다. 사람의 아기 말투와 비슷하다. (가까운 종)</p><cite>Sayigh 외 2023 · PNAS</cite></div>
+      <div class="panel fact"><p>5노트로 가는 작은 배 하나가 돌고래의 50m 안 소통 거리를 26% 줄인다. (가까운 종)</p><cite>Jensen 외 2009 · MEPS</cite></div>
+      <div class="panel fact"><p>제주 남방큰돌고래 휘슬을 AI로 뽑아내는 실제 연구가 있다. 사람이 라벨을 붙인 1,600개로 학습했다.</p><cite>Jin 외 2022 · Ecological Indicators</cite></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><div class="eyebrow">Originality</div><h2>표절 시비를 막는 선</h2><p class="muted">금지 조합 21개를 장마다 셀프 점검. 정밀 진단, 장면 단위 감사, 완성 원고 최종 점검 모두 ‘높음’ 판정 없음.</p></div>
+    <div class="tbl"><table>
+      <thead><tr><th>가까운 작품</th><th>쓰지 않는 것</th><th>우리 작품</th></tr></thead>
+      <tbody>
+        <tr><td><i>Where Light Does Not Reach</i> (2025, 성인 SF)</td><td>고래 메시지가 종말·외계 경고</td><td>메시지 자체가 오역. 스케일은 마을과 바다</td></tr>
+        <tr><td><i>Whalesong</i> (2024, 청소년)</td><td>아이가 고래를 직접 구조, “AI가 종을 잇는다”</td><td>구조는 전문가가, AI는 오역을 만든다</td></tr>
+        <tr><td><i>Song for a Whale</i> (2019, MG)</td><td>고래에게 소리를 들려주는 감동, 52Hz 외로운 고래</td><td>절정에서 재생을 거부하고 엔진을 끄고 듣는다</td></tr>
+        <tr><td><i>The Ocean Calls</i> (2020, 그림책)</td><td>바다가 무서운 손녀가 물질을 배움</td><td>바다에 관심 없는 손자, 물질은 배우지 않는다</td></tr>
+        <tr><td><i>Dolphin Tale</i> (2011, 영화) · 실제 사례 ‘종달이’</td><td>꼬리 부상, 낚싯줄, 여러 차례 일부만 제거</td><td>가슴지느러미에 걸친 초록 그물 조각, 하루 만에 전문가 구조</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section>
+    <div class="sec-head"><div class="eyebrow">Series</div><h2>시리즈 「곰새코지 바다 지도」</h2><p class="muted">매 권 다른 바닷소리, 다른 AI 한계, 마을 규모의 문제.</p></div>
+    <div class="series">
+      <div class="vol now"><span class="n">1권 · 원고 확정</span><h3>돌고래가 말했다, 돌려줘</h3><p>남방큰돌고래 휘슬 · 사람이 붙인 라벨의 오류 · 관광선과 폐어구</p></div>
+      <div class="vol"><span class="n">2권 · 구상</span><h3>딱총새우가 조용해진 밤</h3><p>바닷속 풍경 소리 · 다른 바다에서 배운 AI의 오판 · 항구 확장 공사 소음</p></div>
+      <div class="vol"><span class="n">3권 · 구상</span><h3>숨비소리는 누구의 것인가</h3><p>해녀 숨비소리 · 데이터의 주인과 동의 · 문화 데이터 소유권</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><div class="eyebrow">Progress</div><h2>진행 현황</h2></div>
+    <ol class="steps">
+      <li class="step ok"><span class="s">✓</span><span>시장 조사 · 출판 경로 전략</span><span class="m">10-02</span></li>
+      <li class="step ok"><span class="s">✓</span><span>AI·우주 후보 10개 유사작 점검 → 고래말 번역 AI 선정 · 정밀 진단</span><span class="m">10-02</span></li>
+      <li class="step ok"><span class="s">✓</span><span>제주어 · 돌고래 생태 · 구조 고증, 남은 유사작 · 명칭 점검, 이름 교체</span><span class="m">10-03</span></li>
+      <li class="step ok"><span class="s">✓</span><span>구조 점검 반영 → 17장 아웃라인 v4.1 · 바이블 v4 (호칭 고정표)</span><span class="m">10-03</span></li>
+      <li class="step ok"><span class="s">✓</span><span>목표 독자 초등 5~6학년 전용으로 변경 · 출판 전략 개정 (73810, 14,000원)</span><span class="m">10-03</span></li>
+      <li class="step ok"><span class="s">✓</span><span>집필 · 17장 전부 확정 (장마다 측정 → 5학년 이해 점검 → 심사 · 고문 → 퇴고 → 재심)</span><span class="m">10-04</span></li>
+      <li class="step ok"><span class="s">✓</span><span>7장 · 14장 · 전권 통독 점검, 최종 유사성 · 저작권 점검 (‘높음’ 0건) 반영</span><span class="m">10-04</span></li>
+      <li class="step ok"><span class="s">✓</span><span>전편 오류 검사(인과 · 물리 · 사실 · 오타) 반영, 3장 「바당이의 네 칸」 확정</span><span class="m">10-04</span></li>
+      <li class="step ok"><span class="s">✓</span><span>5단계 교정 · 표기 원칙표 · 부속물 초고 9종(차례, 곰새코지 사람들, 바다 지도, 탐구 노트, 진짜 과학 노트, 용어, 이름 사전, 토론 질문, 작가의 말) · 감수 요청서 4종</span><span class="m">10-05</span></li>
+      <li class="step ok"><span class="s">✓</span><span>독자 패널 재미 평가(중상) → 재미 처방 8개 장 반영 · 부속물 심사 반영(권말 부록 약 1.2만 자, 활동 12개 전체는 교사용 무료 PDF)</span><span class="m">10-05</span></li>
+      <li class="step ok"><span class="s">✓</span><span>6단계 조판 교정쇄 2차 · A5 230쪽 PDF + EPUB (Quarto, 레드팀 1차 반영)</span><span class="m">10-05</span></li>
+      <li class="step ok"><span class="s">✓</span><span>판면 『시간 고양이』 규칙 적용 · 200쪽 개정(원고 약 32% 압축, 몰입 평균 3.6→3.8) · 교정쇄 203쪽</span><span class="m">10-05</span></li>
+      <li class="step wip"><span class="s">●</span><span>삽화(작가 직접) · 표지 · 감수 회신 · 상표 · 지명 · 발행자번호·ISBN</span><span class="m">다음</span></li>
+      <li class="step todo"><span class="s">○</span><span>제주어 화자 감수 · 상표(KIPRIS·USPTO) · 국가지명 DB · 같은 제목 · KC 표시 확인</span><span class="m">출간 전</span></li>
+      <li class="step todo"><span class="s">○</span><span>조판 · 삽화 · 표지 · ISBN → 교보 POD · 국내 전자책</span><span class="m">2027-03</span></li>
+      <li class="step todo"><span class="s">○</span><span>영문판 → Google Play Books · Amazon KDP</span><span class="m">2027-06</span></li>
+    </ol>
+    <div class="tbl"><table>
+      <thead><tr><th>장</th><th>상태</th><th style="text-align:right">본문 (공백 제외)</th><th style="text-align:right">대화</th></tr></thead>
+      <tbody>
+        <tr><td>1장 「돌려줘.」</td><td>확정</td><td class="num">2,196자</td><td class="num">12.7%</td></tr>
+        <tr><td>2장 같은 문장, 다섯 얼굴</td><td>확정</td><td class="num">2,360자</td><td class="num">28.9%</td></tr>
+        <tr><td>3장 바당이의 네 칸</td><td>확정</td><td class="num">2,446자</td><td class="num">38.8%</td></tr>
+        <tr><td>4장 잘라 낸 장면</td><td>확정</td><td class="num">2,232자</td><td class="num">32.9%</td></tr>
+        <tr><td>5장 test_old</td><td>확정</td><td class="num">2,039자</td><td class="num">37.0%</td></tr>
+        <tr><td>6장 불턱</td><td>확정</td><td class="num">2,282자</td><td class="num">34.1%</td></tr>
+        <tr><td>7장 문장이 아니라 이름</td><td>확정</td><td class="num">2,731자</td><td class="num">32.4%</td></tr>
+        <tr><td>8장 맞았잖아요</td><td>확정</td><td class="num">2,513자</td><td class="num">36.2%</td></tr>
+        <tr><td>9장 휴지통</td><td>확정</td><td class="num">2,799자</td><td class="num">35.4%</td></tr>
+        <tr><td>10장 모르겠대요</td><td>확정</td><td class="num">2,178자</td><td class="num">34.8%</td></tr>
+        <tr><td>11장 정정합니다</td><td>확정</td><td class="num">2,337자</td><td class="num">31.0%</td></tr>
+        <tr><td>12장 바다의 귀</td><td>확정</td><td class="num">2,055자</td><td class="num">36.8%</td></tr>
+        <tr><td>13장 운동장에서 교실 한 칸</td><td>확정</td><td class="num">2,492자</td><td class="num">34.1%</td></tr>
+        <tr><td>14장 12시 03분</td><td>확정</td><td class="num">2,274자</td><td class="num">30.9%</td></tr>
+        <tr><td>15장 거기까진 나도 모른다</td><td>확정</td><td class="num">2,923자</td><td class="num">31.4%</td></tr>
+        <tr><td>16장 잘라 낸 장면들</td><td>확정</td><td class="num">1,838자</td><td class="num">39.4%</td></tr>
+        <tr><td>17장 투 올라왔다</td><td>확정</td><td class="num">2,769자</td><td class="num">37.0%</td></tr>
+      </tbody>
+    </table></div>
+    <div class="metrics">
+      <div class="metric"><b>17 / 17</b><span>확정된 장</span></div>
+      <div class="metric"><b>40,464자</b><span>확정 원고 (공백 제외)</span></div>
+      <div class="metric"><b>203쪽</b><span>A5 교정쇄 (『시간 고양이』 판면)</span></div>
+    </div>
+    <div class="bar" role="img" aria-label="17장 모두 확정"><i style="width:100%"></i></div>
+  </section>
+
+  <footer>내부 기획 자료입니다. 결말과 반전이 포함되어 있습니다. 원본: planning/2026-10-03-series-bible-v4.md, planning/2026-10-03-book1-outline-v4.md, strategy/2026-10-03-출판전략-개정-초등고학년.md</footer>
+</div>

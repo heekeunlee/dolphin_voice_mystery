@@ -1,0 +1,78 @@
+# 곰새코지 사람들 {.unnumbered .helper}
+
+::: {.content-visible when-format="pdf"}
+```{=latex}
+\begin{profilepage}
+\profileintro
+\noindent\makebox[\linewidth][c]{\profilehero{images/portraits/danu.jpg}{고단우}{열두 살 · 6학년}{시민 라벨러 리더보드 1위. 코딩을 좋아한다.}\hspace{2mm}\profilehero{images/portraits/chaea.jpg}{양채아}{열두 살 · 6학년}{‘채아의 돌핀로그’를 하는 단우의 친구.}\hspace{2mm}\profilehero{images/portraits/haan.jpg}{다원}{열한 살 · 5학년}{틀린 데를 잘 찾아내는 미숙의 딸.}}\par\vspace{8mm}
+\noindent\makebox[\linewidth][c]{\profilehero{images/portraits/grandma.jpg}{할머니}{해녀}{마지막 물질을 앞둔 해녀. 돌고래를 잘 알아본다.}\hspace{2mm}\profilehero{images/portraits/mom.jpg}{엄마}{간호사}{밤 근무가 많아 단우와 자꾸 엇갈린다.}\hspace{2mm}\profilehero{images/portraits/tak.jpg}{탁 박사}{과학자}{물마루 AI 연구소에서 돌고래 소리를 연구한다.}}
+\clearpage
+\thispagestyle{plain.scrheadings}
+% 두 쪽 펼침에서 첫 인물 페이지와 같은 물리적 조판면을 쓴다.
+% 짝수 쪽의 바깥 여백 차이(7mm)를 보정하고, 첫 사진 행 높이도 맞춘다.
+\vspace*{-5.5mm}
+\begin{center}{\sffamily\color{gray}곰새코지 사람들}\end{center}
+\begin{center}{\sffamily\fontsize{8.5pt}{11pt}\selectfont\color{peopleGray}제주 바닷가에 있는 작은 마을, 곰새코지의 사람들입니다.}\end{center}
+\vspace{3.5mm}
+\noindent\hbox{\kern7mm\makebox[\linewidth][c]{\profilecompact{images/portraits/bong.jpg}{봉 소장}{연구소장}{AI 바당이의 첫 문장을 발표한 사람.}\hspace{2mm}\profilecompact{images/portraits/osamchon.jpg}{오삼촌}{배 조종}{연구소 배를 모는 아저씨. 성이 오씨다.}\hspace{2mm}\profilecompact{images/portraits/tu.jpg}{미숙}{해녀}{다원의 엄마. 곰새코지의 젊은 해녀.}}}\par
+\noindent\hbox{\kern7mm\makebox[\linewidth][c]{\profilecompact{images/portraits/chaea-dad.jpg}{채아 아빠}{관광선 선장}{관광선 ‘곰새코지 3호’를 몬다.}\hspace{2mm}\profilecompact{images/portraits/bokja.jpg}{김복자}{해녀회장}{배가 작업장 가까이 오는 걸 싫어한다.}\hspace{2mm}\profilecompact{images/portraits/deoksu.jpg}{강덕수}{어촌계장}{마을 어민 모임의 대표. 항구 확장을 원한다.}}}\par
+\noindent\hbox{\kern7mm\makebox[\linewidth][c]{\profilecompact{images/portraits/narae.jpg}{윤나래}{돌고래쉼표}{돌고래 보호 단체 활동가. 개인 방송을 한다.}\hspace{7mm}\profilecompact{images/portraits/bulssugi.jpg}{불쑥이}{돌고래}{카메라 앞에 불쑥 떠오른다.}}}
+\end{profilepage}
+```
+:::
+
+::: {.content-visible unless-format="pdf"}
+#### 아이들
+
+**고단우** (열두 살 · 6학년)  
+시민 라벨러 리더보드 1위. 코딩은 유튜브 두 배속으로 배웠다. — *노트북*
+
+**양채아** (열두 살 · 6학년)  
+단우네 반 친구. 유튜브 ‘채아의 돌핀로그’를 한다. 구독자 3만. — *휴대폰*
+
+**다원** (열한 살 · 5학년)  
+남의 글에서 틀린 데부터 찾아낸다. 미숙의 딸. — *단어 노트*
+
+#### 단우네 집
+
+**할머니**  
+단우 할머니. 올해가 마지막 물질인 해녀. 돌고래를 지느러미만 보고 알아본다. — *주황 테왁*
+
+**엄마**  
+제주시 병원 간호사. 밤 근무가 많아 단우와 자꾸 엇갈린다. — *간호사 가방*
+
+#### 물마루 AI 연구소
+
+**탁 박사**  
+물마루 AI 연구소 과학자. 커피를 ‘연료’라고 부른다. — *머그잔*
+
+**봉 소장**  
+물마루 AI 연구소 소장. AI 바당이의 첫 문장을 생중계로 발표했다. — *돌고래 넥타이*
+
+**오삼촌**  
+연구소 배를 모는 아저씨. 친척은 아니고, 성이 오씨라서 오삼촌. — *귤*
+
+#### 마을과 바다의 어른들
+
+**미숙**  
+다원의 엄마. 곰새코지 해녀들 가운데 가장 젊다. — *고무옷*
+
+**채아 아빠** (관광선 선장)  
+돌고래 관광선 ‘곰새코지 3호’를 몬다.
+
+**김복자** (해녀회장)  
+해녀들의 회장. 배가 작업장 가까이 오는 걸 싫어한다.
+
+**강덕수** (어촌계장)  
+마을 어민 모임의 대표. 항구를 넓히자고 한다.
+
+**윤나래** (돌고래쉼표)  
+돌고래 보호 단체 활동가. 개인 방송을 한다.
+
+#### 돌고래
+
+**불쑥이**  
+지느러미 끝이 뜯겼다. 카메라 앞에 불쑥 떠오른다.
+
+:::
+

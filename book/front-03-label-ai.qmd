@@ -1,0 +1,41 @@
+::: {.content-visible when-format="pdf"}
+```{=latex}
+\thispagestyle{empty}
+\begin{center}
+{\sffamily\bfseries\fontsize{22pt}{28pt}\selectfont 라벨과 AI가 소리를 읽는 법\par}
+\vspace{3mm}
+{\sffamily\fontsize{11pt}{16pt}\selectfont 돌고래의 한 번의 소리가 어떻게 ‘뜻이 있는 자료’가 될까요?\par}
+\vspace{12mm}
+\begin{tikzpicture}[
+  box/.style={rounded corners=3mm, draw=memoLine, fill=memoBg, line width=.8pt,
+    minimum width=24mm, minimum height=24mm, align=center, inner sep=2mm,
+    font=\sffamily\fontsize{9pt}{12pt}\selectfont, text=memoText},
+  arrow/.style={-{Latex[length=3mm]}, line width=1.2pt, draw=peopleGray},
+  note/.style={font=\sffamily\fontsize{9pt}{13pt}\selectfont, text=peopleGray, align=center}
+]
+\node[box] (sound) at (-15mm,0) {\shortstack{\fontsize{16pt}{16pt}\selectfont 소리\\[-1mm]\fontsize{9pt}{12pt}\selectfont 바다에서 들린\\조각}};
+\node[box,right=4mm of sound] (label) {\shortstack{\fontsize{16pt}{16pt}\selectfont 라벨\\[-1mm]\fontsize{9pt}{12pt}\selectfont 작은 이름표}};
+\node[box,right=4mm of label] (ai) {\shortstack{\fontsize{16pt}{16pt}\selectfont AI\\[-1mm]\fontsize{9pt}{12pt}\selectfont 비슷한 소리\\패턴 비교}};
+\draw[arrow] (sound) -- node[above,note]{듣기} (label);
+\draw[arrow] (label) -- node[above,note]{자료로 학습} (ai);
+\node[box,below=15mm of label,minimum width=34mm] (human) {\shortstack{\fontsize{16pt}{16pt}\selectfont 사람\\[-1mm]\fontsize{9pt}{12pt}\selectfont 다시 듣고\\맞는지 확인}};
+\draw[arrow] (ai) |- node[pos=.25,right,note]{확인 필요} (human);
+\node[box,below=15mm of ai,minimum width=34mm] (result) {\shortstack{\fontsize{16pt}{16pt}\selectfont 결과\\[-1mm]\fontsize{9pt}{12pt}\selectfont 확인된 라벨\\“무슨 소리인지”}};
+\draw[arrow] (human) -| (result);
+\end{tikzpicture}
+\vspace{15mm}
+\fcolorbox{memoLine}{white}{\begin{minipage}{0.82\linewidth}\centering
+{\sffamily\bfseries\fontsize{14pt}{19pt}\selectfont 핵심은 ‘AI가 혼자 정답을 만드는 것’이 아니에요.\par}
+\vspace{2mm}
+{\normalfont\fontsize{11.5pt}{18pt}\selectfont 사람이 붙인 이름표와 확인 과정이 함께 있어야 AI의 분석을 믿을 수 있어요.}
+\end{minipage}}
+\end{center}
+\clearpage
+```
+:::
+
+::: {.content-visible unless-format="pdf"}
+## 라벨과 AI가 소리를 읽는 법
+
+소리 조각에 이름표를 붙이는 일을 **라벨링**이라고 해요. AI는 이 이름표가 붙은 자료를 많이 보고 비슷한 소리를 찾아요. 그래도 마지막 확인은 사람이 해야 합니다.
+:::

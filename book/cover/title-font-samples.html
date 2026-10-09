@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>표지 제목 글꼴 후보 시안</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;padding:34px;background:#f0f3f5;color:#183248;font-family:"Apple SD Gothic Neo",sans-serif}
+h1{margin:0 0 8px;font-size:28px} .intro{margin:0 0 24px;color:#627381;font-size:15px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.sample{position:relative;height:330px;overflow:hidden;border-radius:14px;background:#062b4a}
+.sample:before{content:"";position:absolute;inset:0;background:url('../images/cover-wrap-panorama-v2.png') 76% center/auto 100% no-repeat;filter:brightness(.8)}
+.sample:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(4,31,58,.68),rgba(4,31,58,.08))}
+.label{position:absolute;z-index:2;left:20px;top:18px;padding:7px 11px;border-radius:20px;background:rgba(255,255,255,.9);color:#254355;font-size:14px;font-weight:700}
+.title{position:absolute;z-index:2;left:24px;right:16px;top:92px;margin:0;color:#fff;font-size:36px;line-height:1.26;letter-spacing:-.045em;text-shadow:0 2px 7px #001d38}
+.author{position:absolute;z-index:2;top:218px;left:28px;color:#fff;font-size:15px;text-shadow:0 1px 5px #001d38}
+.jua{font-family:"BM Jua","배민 주아",sans-serif;font-weight:400;letter-spacing:-.025em}
+.dohyeon{font-family:"BM Dohyeon","배달의민족 도현",sans-serif;font-weight:400;letter-spacing:-.055em}
+.brush{font-family:"Nanum Brush Script","나눔손글씨 붓",cursive;font-weight:400;letter-spacing:0;font-size:52px}
+.base{font-family:"Nanum Gothic ExtraBold","Nanum Gothic","Apple SD Gothic Neo",sans-serif;font-weight:900}
+.kirang{font-family:"BM Kirang Haerang","배달의민족 기랑해랑",sans-serif;font-weight:400;letter-spacing:0}
+.yeonsung{font-family:"BM Yeonsung","배달의민족 연성",sans-serif;font-weight:400;letter-spacing:0}
+.note{position:absolute;z-index:2;bottom:16px;left:20px;right:20px;color:rgba(255,255,255,.83);font-size:13px;text-shadow:0 1px 4px #001d38}
+@media(max-width:1000px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:650px){body{padding:18px}.grid{grid-template-columns:1fr}.sample{height:310px}.title{font-size:36px}.author{top:218px}}
+</style>
+</head>
+<body>
+<h1>표지 제목 글꼴 후보</h1>
+<p class="intro">같은 배경·크기·배치에서 글꼴 인상만 비교한 썸네일 시안</p>
+<main class="grid">
+ <section class="sample"><span class="label">1 · 배민 주아</span><h2 class="title jua">곰새코지 돌고래<br>목소리 사건</h2><div class="author">이희근</div><div class="note">둥글고 친근한 인상 · 초등 고학년 모험동화에 잘 어울림</div></section>
+ <section class="sample"><span class="label">2 · 배민 도현</span><h2 class="title dohyeon">곰새코지 돌고래<br>목소리 사건</h2><div class="author">이희근</div><div class="note">묵직하고 응축된 인상 · 미스터리·사건물 분위기 강화</div></section>
+ <section class="sample"><span class="label">3 · 나눔손글씨 붓</span><h2 class="title brush">곰새코지 돌고래<br>목소리 사건</h2><div class="author">이희근</div><div class="note">손으로 쓴 듯한 개성 · 분위기는 따뜻하지만 작은 판형에선 가독성 확인 필요</div></section>
+ <section class="sample"><span class="label">4 · 현재 글꼴 기준</span><h2 class="title base">곰새코지 돌고래<br>목소리 사건</h2><div class="author">이희근</div><div class="note">나눔고딕 ExtraBold · 안정적이고 또렷한 비교 기준</div></section>
+ <section class="sample"><span class="label">5 · 배민 기랑해랑</span><h2 class="title kirang">곰새코지 돌고래<br>목소리 사건</h2><div class="author">이희근</div><div class="note">장난스럽고 독특한 손글씨 · 제목보다는 한두 단어 포인트에 적합</div></section>
+ <section class="sample"><span class="label">6 · 배민 연성</span><h2 class="title yeonsung">곰새코지 돌고래<br>목소리 사건</h2><div class="author">이희근</div><div class="note">붓글씨 느낌의 활기 · 개성은 강하지만 작은 글씨 가독성 확인 필요</div></section>
+</main>
+</body>
+</html>
