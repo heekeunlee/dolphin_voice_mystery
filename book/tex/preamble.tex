@@ -107,20 +107,25 @@
 }
 % ---- 장 첫 쪽 날짜 줄 ----
 \newcommand{\dateline}[1]{\par\noindent{\sffamily\small\color{gray}#1}\par\medskip}
-% ---- 표제지: 가로 제목 + 투명 컷아웃 그림 ----
+% ---- 표제지: 제목·저자·투명 컷아웃 그림을 조판면 중앙에 한 묶음으로 배치 ----
 \makeatletter
 \renewcommand{\maketitle}{%
   \begin{titlepage}
   \thispagestyle{empty}
-  \AddToShipoutPictureBG*{%
-    \AtPageLowerLeft{\hspace*{10mm}\raisebox{-4mm}{\includegraphics[width=114.4mm]{images/title-adventure.png}}}%
+  \noindent\vbox to \textheight{%
+    \vfil
+    \hbox to \textwidth{\hfil
+      \begin{minipage}{\textwidth}
+      \centering
+      {\titlehandwriting\fontsize{19}{26}\selectfont 곰새코지 돌고래 목소리 사건\par}
+      \vspace{3mm}
+      {\titlehandwriting\fontsize{9.5}{13}\selectfont 이희근\par}
+      \vspace{2mm}
+      \includegraphics[width=82mm]{images/title-adventure.png}\par
+      \end{minipage}%
+    \hfil}%
+    \vfil
   }%
-  \vspace*{17mm}
-  \begin{center}
-  \makebox[0pt][c]{{\titlehandwriting\fontsize{30}{36}\selectfont 곰새코지 돌고래 목소리 사건}}\par
-  \vspace{4mm}
-  {{\titlehandwriting\fontsize{9.5}{13}\selectfont 이희근\par}}
-  \end{center}
   \end{titlepage}
 }
 \makeatother
