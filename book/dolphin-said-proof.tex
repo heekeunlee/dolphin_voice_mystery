@@ -11,7 +11,7 @@
   fontsize=12.5pt,
   headings=small]{scrbook}
 \usepackage{xcolor}
-\usepackage[paperwidth=148mm,paperheight=210mm,textwidth=87mm,inner=34mm,top=24mm,textheight=148.5mm,headsep=7mm,footskip=14mm]{geometry}
+\usepackage[paperwidth=148mm,paperheight=210mm,textwidth=87mm,inner=34mm,outer=27mm,top=24mm,textheight=148.5mm,bottom=37.5mm,headsep=7mm,footskip=14mm]{geometry}
 \usepackage{amsmath,amssymb}
 \setcounter{secnumdepth}{-\maxdimen} % remove section numbering
 \usepackage{iftex}
@@ -120,6 +120,7 @@
 
 % ---- 한글 조판: kotex(xetexko) ----
 \usepackage{kotex}
+% 이야기 본문은 명조 계열로 통일한다. 메시지·앱 알림·메모는 아래 전용 매크로 글꼴을 유지한다.
 % Bundle the OFL fonts used by the book so sandboxed XeTeX renders are stable.
 \setmainfont[Path=tex/fonts/]{NanumMyeongjo.ttc}
 \setsansfont[Path=tex/fonts/]{NanumGothic.ttc}
@@ -128,7 +129,7 @@
 \setsanshangulfont[Path=tex/fonts/]{NanumGothic.ttc}
 \setmonohangulfont[Path=tex/fonts/]{D2Coding.ttc}
 \newfontfamily\latinx{lmroman10-regular.otf}   % 나눔명조에 없는 라틴 확장 문자(é 등)
-% 『시간 고양이』 1권 판면 실측(2026-10-05): 본문 폭 87mm, 쪽당 19줄, 줄 간격 8.0mm(22.7pt), 글자 약 12~12.5pt, 양끝 맞춤
+% 『시간 고양이』 1권 미리보기 실측 기준: 본문 폭 87mm, 쪽당 19줄, 줄 간격 약 8mm(22.7pt), 글자 약 12~12.5pt, 양끝 맞춤
 \makeatletter\renewcommand\normalsize{\@setfontsize\normalsize{12.5pt}{22.7pt}}\makeatother\normalsize
 \linespread{1}
 \setlength{\parindent}{1em}

@@ -49,8 +49,10 @@ format:
       - paperheight=210mm
       - textwidth=87mm
       - inner=34mm
+      - outer=27mm
       - top=24mm
       - textheight=148.5mm
+      - bottom=37.5mm
       - headsep=7mm
       - footskip=14mm
     include-in-header: tex/preamble.tex
