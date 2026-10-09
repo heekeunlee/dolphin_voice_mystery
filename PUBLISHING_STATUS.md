@@ -2,7 +2,7 @@
 
 마지막 정리: 2026-10-09  
 작품: 『곰새코지 돌고래 목소리 사건』  
-상태: 원고 통합·교정쇄 제작 완료, 출간 준비 진행 중
+상태: 원고 통합·교정쇄 제작 완료, 공개 GitHub 저장소·대시보드 운영 준비 완료, 출간 준비 진행 중
 
 ## 확정·현재 기준
 
@@ -12,6 +12,7 @@
 - 내지: A5, 나눔명조 본문, 나눔고딕 제목, 화면·메시지 상자는 별도 스타일.
 - 최신 조판 산출물: `book/_output/dolphin-said-proof.pdf` (229쪽)와 EPUB. 표지 펼침은 별도 제작물.
 - 표지: 2026-10-09 기준 파노라마 v11을 최신 배경으로 사용. 제목·저자·카피·인물 그림은 `book/cover/cover-spread.html` 및 `.tex`에서 배치.
+- GitHub: 공개 저장소 `https://github.com/heekeunlee/dolphin_voice_mystery`; 출판 관리 대시보드 `https://heekeunlee.github.io/dolphin_voice_mystery/` (Pages 빌드 확인 대기).
 - 기획상 출간 목표: 2027년 3월 하순. 계획 가격은 종이책 14,000원, 전자책 9,800원이며 확정 판매정보는 아님.
 - 유통 검토: 교보 POD, 국내 전자책, Google Play, Amazon KDP.
 
@@ -27,7 +28,9 @@
 
 ## 다음 단계
 
-- [ ] GitHub 인증 복구 후 `dolphin_voice_mystery` 비공개 저장소 생성·업로드
+- [x] `dolphin_voice_mystery` 공개 저장소 생성·초기 자료 업로드
+- [x] GitHub Pages를 `/docs` 기준으로 설정
+- [ ] 첫 Pages 빌드와 실사이트 열림 확인
 - [ ] 감수 요청 및 회신 반영(제주어·해녀·과학·교사)
 - [ ] 판권지의 발행일·ISBN·신고 정보·AI 활용 고지 확정
 - [ ] 최종 페이지 수와 인쇄 사양으로 책등 폭·재단·도련 확인
