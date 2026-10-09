@@ -361,11 +361,15 @@
   entryformat=\normalfont\sffamily\fontsize{11pt}{19pt}\selectfont,
   pagenumberformat=\normalfont\sffamily\fontsize{10.5pt}{19pt}\selectfont\color{gray},
   linefill=\hfill,
-  indent=0pt, numwidth=0pt
+  indent=7mm, numwidth=0pt
 ]{tocline}{chapter}
 \definecolor{tocsea}{HTML}{16879A}
-\renewcommand{\tocnum}[1]{\makebox[3.8em][l]{\textcolor{tocsea}{\large\textbullet}\hspace{0.35em}{\color{gray}\footnotesize #1}}}
-\newcommand{\tocgroup}[1]{\addvspace{5mm}{\sffamily\small\bfseries\color{tocsea}\raisebox{0.1ex}{\textbullet}\hspace{0.5em}#1}\par\addvspace{1.8mm}}
+\renewcommand{\tocnum}[1]{\makebox[3.8em][l]{{\color{gray}\footnotesize #1}}}
+\newcommand{\tocgroup}[1]{%
+  \addvspace{6mm}%
+  \noindent\textcolor{tocsea}{\rule{1.2mm}{4.2mm}}\hspace{2.5mm}%
+  {\sffamily\bfseries\fontsize{12}{16}\selectfont\color{tocsea}#1}\par
+  \addvspace{1.5mm}}
 \AfterTOCHead[toc]{\enlargethispage{10mm}}
 \makeatletter
 \@ifpackageloaded{bookmark}{}{\usepackage{bookmark}}
