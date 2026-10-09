@@ -129,6 +129,7 @@
 \setsanshangulfont[Path=tex/fonts/]{NanumGothic.ttc}
 \setmonohangulfont[Path=tex/fonts/]{D2Coding.ttc}
 \newfontfamily\latinx{lmroman10-regular.otf}   % 나눔명조에 없는 라틴 확장 문자(é 등)
+\newhangulfontfamily\titlehandwriting{BM Yeonsung} % 배달의민족 연성체: 표제지 전용
 % 『시간 고양이』 1권 미리보기 실측 기준: 본문 폭 87mm, 쪽당 19줄, 줄 간격 약 8mm(22.7pt), 글자 약 12~12.5pt, 양끝 맞춤
 \makeatletter\renewcommand\normalsize{\@setfontsize\normalsize{12.5pt}{22.7pt}}\makeatother\normalsize
 \linespread{1}
@@ -236,9 +237,9 @@
   }%
   \vspace*{17mm}
   \begin{center}
-  \makebox[0pt][c]{\sffamily\bfseries\addfontfeatures{FakeBold=6.0}\fontsize{30}{36}\selectfont 곰새코지 돌고래 목소리 사건}\par
+  \makebox[0pt][c]{{\titlehandwriting\fontsize{30}{36}\selectfont 곰새코지 돌고래 목소리 사건}}\par
   \vspace{4mm}
-  {\sffamily\fontsize{9.5}{13}\selectfont 이희근\par}
+  {{\titlehandwriting\fontsize{9.5}{13}\selectfont 이희근\par}}
   \end{center}
   \end{titlepage}
 }
