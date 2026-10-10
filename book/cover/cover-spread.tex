@@ -53,20 +53,19 @@
   }
   \node[anchor=north west,text=white!75,align=left,text width=74mm] at (15,47)
     {\sffamily\fontsize{8pt}{11pt}\selectfont 힌트: 세 곳의 녹음을 비교해 봐.};
-  % 장식용 음향망: 세 지점에서 온 파형을 잇는 상징도이며 실제 축척 지도 아님
+  % 장식용 음향망: 세 개의 동일한 수중 마이크와 파형을 잇는 상징도이며 실제 축척 지도 아님
   \draw[cyansea!45,densely dashed,line width=.55pt] (25,32) -- (50.5,36) -- (76,32) -- cycle;
-  \draw[cyansea!25,line width=.4pt] (25,32) circle (5mm);
-  \draw[cyansea!42,line width=.45pt] (25,32) circle (3.2mm);
-  \draw[cyansea!25,line width=.4pt] (76,32) circle (5mm);
-  \draw[cyansea!42,line width=.45pt] (76,32) circle (3.2mm);
-  \draw[cyansea!25,line width=.4pt] (50.5,21) circle (5mm);
-  \draw[cyansea!42,line width=.45pt] (50.5,21) circle (3.2mm);
-  \foreach \x/\y/\yb/\yt in {25/32/27/33,76/32/27/33,50.5/21/16/22} {
-    \draw[white!85,line width=.8pt,rounded corners=.5mm] (\x,\yb) -- (\x,\yt);
-    \fill[cyansea] (\x,\yt) circle (1mm);
+  \foreach \x/\y in {25/32,76/32,50.5/23} {
+    \draw[cyansea!25,line width=.4pt] (\x,\y) circle (5mm);
+    \draw[cyansea!42,line width=.45pt] (\x,\y) circle (3.2mm);
+    % kapsul-shaped sensor head, stem, and anchor make each symbol read as a mic
+    \begin{scope}[shift={ (\x,\y) }]
+      \draw[white!90,line width=.75pt,rounded corners=.7mm,fill=cyansea!70]
+        (-1.2,-2) rectangle (1.2,2);
+      \draw[white!90,line width=.75pt] (0,-2) -- (0,-6);
+      \draw[white!90,line width=.75pt] (-1.8,-6) -- (1.8,-6);
+    \end{scope}
   }
-  \fill[white] (50.5,31) circle (1mm);
-  \draw[white!55,line width=.4pt] (50.5,31) circle (2.5mm);
 
   % 뒷표지 문구
   \node[anchor=north west,text=white,align=left,text width=112mm] at (117,178)
