@@ -19,11 +19,14 @@ body{font-family:"Nanum Gothic","Noto Sans CJK KR","Apple SD Gothic Neo",sans-se
 .flap .quote{font-family:"BM Yeonsung","배달의민족 연성",sans-serif;font-size:20pt;line-height:1.3;margin:0 0 2mm}
 .flap .signal{display:block;width:100%;height:13mm;margin:0 0 4mm}
 .flap h3{font-family:"Nanum Gothic","Apple SD Gothic Neo",sans-serif;font-size:12pt;line-height:1.3;margin:0 0 3mm}
-.flap .challenge{font-family:"Nanum Myeongjo",serif;font-size:9.5pt;line-height:1.5;margin:0 0 7mm}
-.flap .slots{display:flex;gap:2mm;margin-top:0}
-.flap .slot{flex:1;text-align:center;color:#9be7f3;font-size:8pt}
-.flap .slot i{display:block;height:12mm;border:.3mm solid rgba(255,255,255,.82);border-radius:1mm;margin-top:1.5mm}
-.flap .hint{font-size:8pt;line-height:1.4;color:rgba(255,255,255,.78);margin-top:4mm}
+.flap .challenge{font-family:"Nanum Myeongjo",serif;font-size:9.5pt;line-height:1.5;margin:0 0 4mm}
+.flap .sites{display:flex;gap:2mm}
+.flap .site{flex:1;min-width:0;text-align:center;padding:2mm 1mm 1.5mm;border:.3mm solid rgba(255,255,255,.62);border-radius:1.5mm;background:rgba(7,80,112,.28)}
+.flap .site svg{display:block;width:100%;height:12mm;margin:0 auto 1mm}
+.flap .site-name{font-size:7.5pt;line-height:1.2;white-space:nowrap;color:#d8f8fb}
+.flap .order{display:inline-flex;width:4mm;height:4mm;align-items:center;justify-content:center;border:.3mm solid #9be7f3;border-radius:50%;color:#9be7f3;font-size:6.5pt;line-height:1;margin-bottom:1mm}
+.flap .hint{font-size:8pt;line-height:1.4;color:rgba(255,255,255,.78);margin-top:3mm}
+.flap .sonar-map{display:block;width:100%;height:37mm;margin-top:2mm}
 .flap .name-label{font-size:8.5pt;color:rgba(255,255,255,.74);margin-top:8mm}
 .flap .name-line{height:7mm;border-bottom:.3mm solid rgba(255,255,255,.85);margin-bottom:6mm}
 .flap .role-title{font-family:"Nanum Gothic","Apple SD Gothic Neo",sans-serif;font-size:10pt;margin:0 0 4mm}
@@ -42,7 +45,7 @@ body{font-family:"Nanum Gothic","Noto Sans CJK KR","Apple SD Gothic Neo",sans-se
 .spine-author{bottom:20mm;font-size:9.5pt;line-height:1.15}
 .front{overflow:hidden;text-align:center;color:#fff}
 .front h1{position:absolute;z-index:4;top:35mm;left:-2mm;right:16mm;margin:0;font-family:"BM Yeonsung","배달의민족 연성",sans-serif;font-size:40.8pt;line-height:1.16;font-weight:400;letter-spacing:0;-webkit-text-stroke:2px #000;paint-order:stroke fill;text-shadow:0 2px 5px rgba(0,0,0,.68)}
-.front .author{position:absolute;z-index:3;top:81mm;left:51mm;width:36mm;font-family:"BM Yeonsung","배달의민족 연성",sans-serif;font-size:10pt;letter-spacing:.08em;text-shadow:0 1px 4px #062b4a}
+.front .author{position:absolute;z-index:3;top:76mm;left:51mm;width:36mm;font-family:"BM Yeonsung","배달의민족 연성",sans-serif;font-size:10pt;letter-spacing:.08em;text-shadow:0 1px 4px #062b4a}
 .front .tagline{position:absolute;z-index:3;top:19mm;left:20mm;right:-2mm;text-align:left;font-family:"Malgun Gothic","맑은 고딕","Nanum Gothic","Apple SD Gothic Neo",sans-serif;font-size:10pt;line-height:1.25;text-shadow:0 1px 4px #062b4a}
 .front .kids{position:absolute;z-index:2;width:109.6mm;left:19.2mm;bottom:1mm}
 </style>
@@ -57,17 +60,28 @@ body{font-family:"Nanum Gothic","Noto Sans CJK KR","Apple SD Gothic Neo",sans-se
       <div class="label">수신된 문장</div>
       <div class="quote">“돌려줘.”</div>
       <svg class="signal" viewBox="0 0 720 130" aria-hidden="true">
-        <path d="M0 65H720M0 20H720M0 110H720" fill="none" stroke="rgba(155,231,243,.38)" stroke-width="2"/>
         <path d="M0 65h28l8-4 8 8 8-18 8 29 9-51 8 76 10-70 10 42 10-14 10 5h28l10-7 10 13 10-24 10 39 10-63 10 83 10-61 11 29 12-10h28l10-4 10 9 10-16 10 27 10-46 10 61 10-44 10 21 10-8h30l10-6 10 13 10-22 10 35 10-54 10 69 10-50 10 25 10-10h36l10-5 10 11 10-19 10 31 10-49 10 65 10-44 10 20 10-8h38" fill="none" stroke="#16aeca" stroke-width="5" stroke-linejoin="round"/>
       </svg>
       <h3>미션 01 · 파형 추적</h3>
-      <p class="challenge">같은 휘슬, 세 마이크!<br>도착 순서를 기록에서 밝혀라.</p>
-      <div class="slots">
-        <div class="slot">먼저<i></i></div>
-        <div class="slot">다음<i></i></div>
-        <div class="slot">마지막<i></i></div>
+      <p class="challenge">같은 휘슬, 세 마이크!<br>먼저 들은 곳부터 1·2·3을 적어 봐.</p>
+      <div class="sites">
+        <div class="site"><svg viewBox="0 0 80 48" aria-hidden="true"><path d="M16 40h48M24 40V15l16-9 16 9v25M31 19h18M33 26h14M36 40V31h8v9" fill="none" stroke="#9be7f3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 17q-7 7 0 14M64 17q7 7 0 14" fill="none" stroke="#16aeca" stroke-width="2"/></svg><span class="order"></span><div class="site-name">등대</div></div>
+        <div class="site"><svg viewBox="0 0 80 48" aria-hidden="true"><path d="M6 38h68M10 32l9-11 9 11 9-11 9 11 9-11 9 11 9-11 7 9M36 38V13M31 18q5-7 10 0M28 23q8-12 16 0" fill="none" stroke="#9be7f3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="36" cy="11" r="2" fill="#16aeca"/></svg><span class="order"></span><div class="site-name">큰여</div></div>
+        <div class="site"><svg viewBox="0 0 80 48" aria-hidden="true"><path d="M8 38h64M12 34h56M18 34V17h9v17M27 34V22h9v12M36 34V17h9v17M45 34V22h9v12M54 34V17h9v17" fill="none" stroke="#9be7f3" stroke-width="2.5" stroke-linejoin="round"/><path d="M15 13q-5 5 0 10M66 13q5 5 0 10" fill="none" stroke="#16aeca" stroke-width="2"/></svg><span class="order"></span><div class="site-name">방파제</div></div>
       </div>
       <div class="hint">힌트: 세 곳의 녹음을 비교해 봐.</div>
+      <svg class="sonar-map" viewBox="0 0 720 300" aria-label="세 수중 마이크의 신호를 잇는 음향 탐사도">
+        <path d="M112 91L360 54 608 91 360 245Z" fill="rgba(22,174,202,.06)" stroke="rgba(155,231,243,.5)" stroke-width="3" stroke-dasharray="7 9"/>
+        <path d="M112 91Q360 8 608 91M112 91Q360 174 608 91M360 54Q272 153 360 245M360 54Q448 153 360 245" fill="none" stroke="rgba(22,174,202,.27)" stroke-width="2"/>
+        <g fill="none" stroke="#16aeca" stroke-width="3">
+          <circle cx="112" cy="91" r="21" opacity=".9"/><circle cx="112" cy="91" r="43" opacity=".55"/><circle cx="112" cy="91" r="65" opacity=".28"/>
+          <circle cx="608" cy="91" r="21" opacity=".9"/><circle cx="608" cy="91" r="43" opacity=".55"/><circle cx="608" cy="91" r="65" opacity=".28"/>
+          <circle cx="360" cy="245" r="21" opacity=".9"/><circle cx="360" cy="245" r="43" opacity=".55"/><circle cx="360" cy="245" r="65" opacity=".28"/>
+        </g>
+        <g stroke="#d8f8fb" stroke-width="5" stroke-linecap="round"><path d="M112 87v28M608 87v28M360 241v28"/></g>
+        <g fill="#9be7f3"><circle cx="112" cy="83" r="7"/><circle cx="608" cy="83" r="7"/><circle cx="360" cy="237" r="7"/></g>
+        <circle cx="360" cy="130" r="7" fill="#fff"/><circle cx="360" cy="130" r="18" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2"/>
+      </svg>
     </div>
   </section>
   <div class="core">

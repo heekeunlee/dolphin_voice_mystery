@@ -41,18 +41,32 @@
   \node[anchor=north west,text=white,align=left,text width=74mm] at (15,84)
     {\normalfont\fontsize{9.5pt}{14pt}\selectfont
     같은 휘슬, 세 마이크!\par
-    도착 순서를 기록에서 밝혀라.};
-  \node[anchor=north west,text=cyansea!30!white,align=left,text width=74mm] at (15,57)
-    {\sffamily\bfseries\fontsize{8pt}{11pt}\selectfont 먼저};
-  \node[anchor=north west,text=cyansea!30!white,align=left,text width=74mm] at (40,57)
-    {\sffamily\bfseries\fontsize{8pt}{11pt}\selectfont 다음};
-  \node[anchor=north west,text=cyansea!30!white,align=left,text width=74mm] at (65,57)
-    {\sffamily\bfseries\fontsize{8pt}{11pt}\selectfont 마지막};
-  \draw[white!80,line width=.5pt,rounded corners=1mm] (15,39) rectangle (35,51);
-  \draw[white!80,line width=.5pt,rounded corners=1mm] (40,39) rectangle (60,51);
-  \draw[white!80,line width=.5pt,rounded corners=1mm] (65,39) rectangle (86,51);
-  \node[anchor=south west,text=white!75,align=left,text width=74mm] at (15,22)
+    먼저 들은 곳부터 1·2·3을 적어 봐.};
+  % 장소를 명시해 답안칸의 목적이 한눈에 보이도록 구성
+  \foreach \x/\cx/\site in {15/25.5/등대,40/50.5/큰여,65/75.5/방파제} {
+    \draw[white!55,line width=.45pt,rounded corners=1mm,fill=deepsea,opacity=.32] (\x,52) rectangle +(21,20);
+    \draw[white!80,line width=.45pt] (\cx,67) circle (2.4mm);
+    \node[anchor=center,text=cyansea!25!white] at (\cx,67)
+      {\sffamily\fontsize{6.5pt}{7pt}\selectfont};
+    \node[anchor=north,text=white,align=center] at (\cx,62)
+      {\sffamily\fontsize{8pt}{10pt}\selectfont \site};
+  }
+  \node[anchor=north west,text=white!75,align=left,text width=74mm] at (15,47)
     {\sffamily\fontsize{8pt}{11pt}\selectfont 힌트: 세 곳의 녹음을 비교해 봐.};
+  % 장식용 음향망: 세 지점에서 온 파형을 잇는 상징도이며 실제 축척 지도 아님
+  \draw[cyansea!45,densely dashed,line width=.55pt] (25,32) -- (50.5,36) -- (76,32) -- cycle;
+  \draw[cyansea!25,line width=.4pt] (25,32) circle (5mm);
+  \draw[cyansea!42,line width=.45pt] (25,32) circle (3.2mm);
+  \draw[cyansea!25,line width=.4pt] (76,32) circle (5mm);
+  \draw[cyansea!42,line width=.45pt] (76,32) circle (3.2mm);
+  \draw[cyansea!25,line width=.4pt] (50.5,21) circle (5mm);
+  \draw[cyansea!42,line width=.45pt] (50.5,21) circle (3.2mm);
+  \foreach \x/\y/\yb/\yt in {25/32/27/33,76/32/27/33,50.5/21/16/22} {
+    \draw[white!85,line width=.8pt,rounded corners=.5mm] (\x,\yb) -- (\x,\yt);
+    \fill[cyansea] (\x,\yt) circle (1mm);
+  }
+  \fill[white] (50.5,31) circle (1mm);
+  \draw[white!55,line width=.4pt] (50.5,31) circle (2.5mm);
 
   % 뒷표지 문구
   \node[anchor=north west,text=white,align=left,text width=112mm] at (117,178)
@@ -90,7 +104,7 @@
     {\coverdisplay\fontsize{40.8pt}{47pt}\selectfont
       \contour{black}{곰새코지 돌고래}\par
       \contour{black}{목소리 사건}};
-  \node[anchor=north,text=white,align=center] at (342,127)
+  \node[anchor=north,text=white,align=center] at (342,132)
     {\coverdisplay\addfontfeatures{LetterSpace=8}\fontsize{10pt}{13pt}\selectfont 이희근};
 
   % 오른쪽 날개: 아이가 직접 이름을 적고 역할을 고르는 탐사대원증
