@@ -11,8 +11,9 @@
 
 - 최신 내지 교정 PDF: `book/_output/dolphin-said-proof.pdf` (229쪽, 표지 펼침 별도)
 - EPUB: `book/_output/dolphin-said-proof.epub`
-- 최신 전체 표지 펼침 미리보기: `book/cover/cover-spread-v17-preview.png` (최신 날개 그림 반영 전)
-- 최신 날개 일러스트: `book/images/flap-hydrophone-v4.jpg`
+- 최신 전체 표지 펼침 미리보기: `book/cover/cover-spread-v18-preview.png` (최신 날개 그림 반영)
+- 전체 표지 펼침 원본: `book/cover/cover-spread.html` 및 `book/cover/cover-spread.tex`
+- 최신 날개 일러스트: `book/images/flap-hydrophone-v4.jpg` (해저 고정형 수중 마이크, 확대된 돌고래)
 - 날개 그림 모음: `book/images/flap-lighthouse-v2.jpg`, `flap-reef-v2.jpg`, `flap-breakwater-v2.jpg`, `flap-hydrophone-v4.jpg`
 - 표지 배경 원본: `book/images/cover-wrap-panorama-v11.png`
 
