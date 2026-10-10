@@ -11,7 +11,7 @@
 
 - 최신 내지 교정 PDF: `book/_output/dolphin-said-proof.pdf` (229쪽, 표지 펼침 별도)
 - EPUB: `book/_output/dolphin-said-proof.epub`
-- 최신 표지 펼침 미리보기: `book/cover/cover-spread-v15-preview.png`
+- 최신 표지 펼침 미리보기: `book/cover/cover-spread-v16-preview.png`
 - 표지 배경 원본: `book/images/cover-wrap-panorama-v11.png`
 
 ## 다시 조판하기

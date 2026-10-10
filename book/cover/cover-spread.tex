@@ -43,37 +43,29 @@
     같은 휘슬, 세 마이크!\par
     먼저 들은 곳부터 1·2·3을 적어 봐.};
   % 장소를 명시해 답안칸의 목적이 한눈에 보이도록 구성
-  \foreach \x/\cx/\site in {15/25.5/등대,40/50.5/큰여,65/75.5/방파제} {
+  \foreach \x in {15,40,65} {
     \draw[white!55,line width=.45pt,rounded corners=1mm,fill=deepsea,opacity=.32] (\x,52) rectangle +(21,20);
-    \draw[white!80,line width=.45pt] (\cx,67) circle (2.4mm);
-    \node[anchor=center,text=cyansea!25!white] at (\cx,67)
-      {\sffamily\fontsize{6.5pt}{7pt}\selectfont};
-    \node[anchor=north,text=white,align=center] at (\cx,62)
-      {\sffamily\fontsize{8pt}{10pt}\selectfont \site};
   }
+  \node[anchor=south west,inner sep=0] at (15,58)
+    {\includegraphics[width=21mm,height=13mm]{../images/flap-lighthouse-v2.jpg}};
+  \node[anchor=south west,inner sep=0] at (40,58)
+    {\includegraphics[width=21mm,height=13mm]{../images/flap-reef-v2.jpg}};
+  \node[anchor=south west,inner sep=0] at (65,58)
+    {\includegraphics[width=21mm,height=13mm]{../images/flap-breakwater-v2.jpg}};
+  \foreach \x in {20.5,45.5,70.5} {
+    \draw[white!80,line width=.45pt] (\x,55.5) circle (1.8mm);
+  }
+  \node[anchor=center,text=white] at (24.5,55.5)
+    {\sffamily\fontsize{7.5pt}{9pt}\selectfont 등대};
+  \node[anchor=center,text=white] at (49.5,55.5)
+    {\sffamily\fontsize{7.5pt}{9pt}\selectfont 큰여};
+  \node[anchor=center,text=white] at (77,55.5)
+    {\sffamily\fontsize{7.5pt}{9pt}\selectfont 방파제};
   \node[anchor=north west,text=white!75,align=left,text width=74mm] at (15,47)
     {\sffamily\fontsize{8pt}{11pt}\selectfont 힌트: 세 곳의 녹음을 비교해 봐.};
-  % 한 대의 수중 마이크를 확대해 양쪽에서 들어오는 음파를 수집하는 장면
-  \draw[white!25,line width=.45pt] (16,19) .. controls (34,17) and (67,17) .. (85,19);
-  \draw[cyansea,line width=.9pt,samples=90,domain=15:46,smooth,variable=\x]
-    plot (\x,{34+1.4*sin(48*(\x-15))});
-  \draw[cyansea!80,line width=.75pt,samples=90,domain=15:46,smooth,variable=\x]
-    plot (\x,{27+1.1*sin(48*(\x-15))});
-  \draw[cyansea,line width=.9pt,samples=90,domain=86:55,smooth,variable=\x]
-    plot (\x,{34+1.4*sin(48*(86-\x))});
-  \draw[cyansea!80,line width=.75pt,samples=90,domain=86:55,smooth,variable=\x]
-    plot (\x,{27+1.1*sin(48*(86-\x))});
-  \fill[white!90] (46.5,34) -- (44.5,35.2) -- (44.5,32.8) -- cycle;
-  \fill[white!90] (54.5,34) -- (56.5,35.2) -- (56.5,32.8) -- cycle;
-  \fill[white!85,rounded corners=1mm] (47.5,25) rectangle (53.5,42);
-  \fill[deepsea!80,rounded corners=.7mm] (48.1,25.8) rectangle (52.9,41.2);
-  \foreach \y in {29,32,35,38} {\draw[cyansea!70,line width=.45pt] (48.8,\y) -- (52.2,\y);}
-  \fill[white] (50.5,39.5) circle (0.65mm);
-  \draw[white!85,line width=.8pt] (50.5,25) -- (50.5,19.5);
-  \draw[white!85,line width=.8pt] (45.5,19.5) -- (55.5,19.5);
-  \draw[white!75,line width=.55pt] (47,19.5) -- (49,23) -- (52,23) -- (54,19.5);
-  \node[anchor=south,text=white!80] at (50.5,14.7)
-    {\sffamily\fontsize{7.5pt}{9pt}\selectfont 수중 마이크가 휘슬 음파를 모아요};
+  % 표지와 같은 화풍의 수중 마이크 원화: 휘슬 음파를 받는 한 장면
+  \node[anchor=south west,inner sep=0] at (15,15)
+    {\includegraphics[width=71mm,height=39mm]{../images/flap-hydrophone-v2.jpg}};
 
   % 뒷표지 문구
   \node[anchor=north west,text=white,align=left,text width=112mm] at (117,178)
