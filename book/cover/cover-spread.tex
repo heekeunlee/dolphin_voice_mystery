@@ -53,19 +53,27 @@
   }
   \node[anchor=north west,text=white!75,align=left,text width=74mm] at (15,47)
     {\sffamily\fontsize{8pt}{11pt}\selectfont 힌트: 세 곳의 녹음을 비교해 봐.};
-  % 장식용 음향망: 세 개의 동일한 수중 마이크와 파형을 잇는 상징도이며 실제 축척 지도 아님
-  \draw[cyansea!45,densely dashed,line width=.55pt] (25,32) -- (50.5,36) -- (76,32) -- cycle;
-  \foreach \x/\y in {25/32,76/32,50.5/23} {
-    \draw[cyansea!25,line width=.4pt] (\x,\y) circle (5mm);
-    \draw[cyansea!42,line width=.45pt] (\x,\y) circle (3.2mm);
-    % kapsul-shaped sensor head, stem, and anchor make each symbol read as a mic
-    \begin{scope}[shift={ (\x,\y) }]
-      \draw[white!90,line width=.75pt,rounded corners=.7mm,fill=cyansea!70]
-        (-1.2,-2) rectangle (1.2,2);
-      \draw[white!90,line width=.75pt] (0,-2) -- (0,-6);
-      \draw[white!90,line width=.75pt] (-1.8,-6) -- (1.8,-6);
-    \end{scope}
-  }
+  % 한 대의 수중 마이크를 확대해 양쪽에서 들어오는 음파를 수집하는 장면
+  \draw[white!25,line width=.45pt] (16,19) .. controls (34,17) and (67,17) .. (85,19);
+  \draw[cyansea,line width=.9pt,samples=90,domain=15:46,smooth,variable=\x]
+    plot (\x,{34+1.4*sin(48*(\x-15))});
+  \draw[cyansea!80,line width=.75pt,samples=90,domain=15:46,smooth,variable=\x]
+    plot (\x,{27+1.1*sin(48*(\x-15))});
+  \draw[cyansea,line width=.9pt,samples=90,domain=86:55,smooth,variable=\x]
+    plot (\x,{34+1.4*sin(48*(86-\x))});
+  \draw[cyansea!80,line width=.75pt,samples=90,domain=86:55,smooth,variable=\x]
+    plot (\x,{27+1.1*sin(48*(86-\x))});
+  \fill[white!90] (46.5,34) -- (44.5,35.2) -- (44.5,32.8) -- cycle;
+  \fill[white!90] (54.5,34) -- (56.5,35.2) -- (56.5,32.8) -- cycle;
+  \fill[white!85,rounded corners=1mm] (47.5,25) rectangle (53.5,42);
+  \fill[deepsea!80,rounded corners=.7mm] (48.1,25.8) rectangle (52.9,41.2);
+  \foreach \y in {29,32,35,38} {\draw[cyansea!70,line width=.45pt] (48.8,\y) -- (52.2,\y);}
+  \fill[white] (50.5,39.5) circle (0.65mm);
+  \draw[white!85,line width=.8pt] (50.5,25) -- (50.5,19.5);
+  \draw[white!85,line width=.8pt] (45.5,19.5) -- (55.5,19.5);
+  \draw[white!75,line width=.55pt] (47,19.5) -- (49,23) -- (52,23) -- (54,19.5);
+  \node[anchor=south,text=white!80] at (50.5,14.7)
+    {\sffamily\fontsize{7.5pt}{9pt}\selectfont 수중 마이크가 휘슬 음파를 모아요};
 
   % 뒷표지 문구
   \node[anchor=north west,text=white,align=left,text width=112mm] at (117,178)
