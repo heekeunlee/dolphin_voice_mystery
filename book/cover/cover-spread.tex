@@ -19,20 +19,40 @@
   \node[anchor=south west,inner sep=0] at (0,0)
     {\includegraphics[width=511mm,height=210mm]{../images/cover-wrap-panorama-v11.png}};
   \fill[deepsea,opacity=.18] (0,0) rectangle (511,210);
-  % 왼쪽 날개: 독자에게 건네는 짧은 안내
-  \node[anchor=north west,text=white,align=left,text width=80mm] at (14,190)
-    {\sffamily\bfseries\fontsize{15pt}{20pt}\selectfont 이 책을 펼치기 전에};
-  \node[anchor=north west,text=white,align=left,text width=78mm] at (14,168)
-    {\normalfont\fontsize{11pt}{17pt}\selectfont
-    돌고래의 목소리는\par
-    누구에게 먼저 닿을까요?\par\vspace{5mm}
-    AI · 수중 마이크 · 해녀 ·\par
-    바다 미스터리를 따라\par
-    곰새코지의 밤으로\par
-    함께 들어가 보세요.};
-  \draw[white!45,line width=.4pt] (14,55) -- (86,55);
-  \node[anchor=south west,text=white,align=left,text width=75mm] at (14,42)
-    {\sffamily\fontsize{9pt}{13pt}\selectfont 초등 5–6학년 과학 모험 동화};
+  % 왼쪽 날개: 소설 속 수중음향 분석 로그를 펼쳐 보는 독자 미션
+  \fill[deepsea,opacity=.48,rounded corners=3mm] (9,14) rectangle (92,196);
+  \draw[cyansea!75,line width=.55pt,rounded corners=3mm] (9,14) rectangle (92,196);
+  \node[anchor=north west,text=cyansea!35!white,align=left,text width=76mm] at (15,187)
+    {\sffamily\bfseries\fontsize{9pt}{12pt}\selectfont 곰새코지 · 수중음향 분석실};
+  \draw[cyansea!80,line width=.6pt] (15,178) -- (86,178);
+  \node[anchor=north west,text=white,align=left,text width=76mm] at (15,169)
+    {\sffamily\bfseries\fontsize{15pt}{19pt}\selectfont 사건 기록 03:00};
+  \node[anchor=north west,text=white!70,align=left,text width=70mm] at (15,151)
+    {\sffamily\fontsize{8.5pt}{11pt}\selectfont 수신된 문장};
+  \node[anchor=north west,text=white,align=left,text width=70mm] at (15,139)
+    {\coverdisplay\fontsize{20pt}{24pt}\selectfont “돌려줘.”};
+  % 장식용 파형: 특정 실측 음향 데이터를 나타내지 않음
+  \draw[cyansea!35,line width=.35pt] (15,125) -- (86,125);
+  \draw[cyansea!35,line width=.35pt] (15,113) -- (86,113);
+  \draw[cyansea,line width=.9pt,samples=120,domain=15:86,smooth,variable=\x]
+    plot (\x,{119+3*sin(18*(\x-15))});
+  \node[anchor=north west,text=white,align=left,text width=76mm] at (15,101)
+    {\sffamily\bfseries\fontsize{12pt}{16pt}\selectfont 미션 01 · 파형 추적};
+  \node[anchor=north west,text=white,align=left,text width=74mm] at (15,84)
+    {\normalfont\fontsize{9.5pt}{14pt}\selectfont
+    같은 휘슬, 세 마이크!\par
+    도착 순서를 기록에서 밝혀라.};
+  \node[anchor=north west,text=cyansea!30!white,align=left,text width=74mm] at (15,57)
+    {\sffamily\bfseries\fontsize{8pt}{11pt}\selectfont 먼저};
+  \node[anchor=north west,text=cyansea!30!white,align=left,text width=74mm] at (40,57)
+    {\sffamily\bfseries\fontsize{8pt}{11pt}\selectfont 다음};
+  \node[anchor=north west,text=cyansea!30!white,align=left,text width=74mm] at (65,57)
+    {\sffamily\bfseries\fontsize{8pt}{11pt}\selectfont 마지막};
+  \draw[white!80,line width=.5pt,rounded corners=1mm] (15,39) rectangle (35,51);
+  \draw[white!80,line width=.5pt,rounded corners=1mm] (40,39) rectangle (60,51);
+  \draw[white!80,line width=.5pt,rounded corners=1mm] (65,39) rectangle (86,51);
+  \node[anchor=south west,text=white!75,align=left,text width=74mm] at (15,22)
+    {\sffamily\fontsize{8pt}{11pt}\selectfont 힌트: 세 곳의 녹음을 비교해 봐.};
 
   % 뒷표지 문구
   \node[anchor=north west,text=white,align=left,text width=112mm] at (117,178)
@@ -73,22 +93,32 @@
   \node[anchor=north,text=white,align=center] at (342,127)
     {\coverdisplay\addfontfeatures{LetterSpace=8}\fontsize{10pt}{13pt}\selectfont 이희근};
 
-  % 오른쪽 날개: 작가 및 독서 포인트
-  \node[anchor=north west,text=white,align=left,text width=78mm] at (425,190)
-    {\sffamily\bfseries\fontsize{14pt}{19pt}\selectfont 이 책의\par 탐사 키워드};
-  \node[anchor=north west,text=white,align=left,text width=78mm] at (425,161)
-    {\normalfont\fontsize{10pt}{15pt}\selectfont
-    돌고래의 클릭음\par
-    수중 마이크 세 대\par
-    해녀의 바다 경험\par
-    AI 라벨과 시민 과학};
-  \draw[white!45,line width=.4pt] (425,90) -- (497,90);
-  \node[anchor=north west,text=white,align=left,text width=76mm] at (425,78)
-    {\sffamily\bfseries\fontsize{12pt}{16pt}\selectfont 작가의 말};
-  \node[anchor=north west,text=white,align=left,text width=76mm] at (425,57)
-    {\normalfont\fontsize{9pt}{14pt}\selectfont
-    바다의 소리를 자세히 들으면\par
-    과학과 상상이 만나는 순간이\par
-    찾아옵니다.};
+  % 오른쪽 날개: 아이가 직접 이름을 적고 역할을 고르는 탐사대원증
+  \fill[deepsea,opacity=.48,rounded corners=3mm] (419,14) rectangle (502,196);
+  \draw[cyansea!75,line width=.55pt,rounded corners=3mm] (419,14) rectangle (502,196);
+  \node[anchor=north west,text=cyansea!35!white,align=left,text width=76mm] at (425,187)
+    {\sffamily\bfseries\fontsize{9pt}{12pt}\selectfont 곰새코지 바다탐사대};
+  \draw[cyansea!80,line width=.6pt] (425,178) -- (496,178);
+  \node[anchor=north west,text=white,align=left,text width=76mm] at (425,168)
+    {\sffamily\bfseries\fontsize{15pt}{19pt}\selectfont 나의 탐사대원증};
+  \node[anchor=north west,text=white!70,align=left,text width=70mm] at (425,143)
+    {\sffamily\fontsize{8.5pt}{11pt}\selectfont 이름};
+  \draw[white!85,line width=.5pt] (425,132) -- (493,132);
+  \node[anchor=north west,text=white,align=left,text width=76mm] at (425,119)
+    {\sffamily\bfseries\fontsize{10pt}{14pt}\selectfont 내가 맡을 임무를 골라 봐!};
+  \draw[white!85,line width=.5pt] (425,96) rectangle (429,100);
+  \node[anchor=north west,text=white,align=left,text width=67mm] at (432,101)
+    {\normalfont\fontsize{9pt}{14pt}\selectfont 소리에 귀 기울이기};
+  \draw[white!85,line width=.5pt] (425,82) rectangle (429,86);
+  \node[anchor=north west,text=white,align=left,text width=67mm] at (432,87)
+    {\normalfont\fontsize{9pt}{14pt}\selectfont 잘린 기록 찾아내기};
+  \draw[white!85,line width=.5pt] (425,68) rectangle (429,72);
+  \node[anchor=north west,text=white,align=left,text width=67mm] at (432,73)
+    {\normalfont\fontsize{9pt}{14pt}\selectfont 바다의 단서 읽어내기};
+  \draw[white!45,line width=.4pt] (425,58) -- (496,58);
+  \node[anchor=north west,text=cyansea!30!white,align=left,text width=76mm] at (425,48)
+    {\sffamily\bfseries\fontsize{8pt}{11pt}\selectfont 첫 번째 사건};
+  \node[anchor=north west,text=white,align=left,text width=73mm] at (425,35)
+    {\coverdisplay\fontsize{11pt}{15pt}\selectfont “돌려줘.”라고 한 목소리의 주인을 찾아라!};
 \end{tikzpicture}
 \end{document}

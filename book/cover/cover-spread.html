@@ -11,9 +11,26 @@ body{font-family:"Nanum Gothic","Noto Sans CJK KR","Apple SD Gothic Neo",sans-se
 .spread{position:relative;width:511mm;height:210mm;display:flex;overflow:hidden;background:url('../images/cover-wrap-panorama-v11.png') center/100% 100% no-repeat}
 .spread:before{content:"";position:absolute;inset:0;background:rgba(6,43,74,.18);pointer-events:none;z-index:1}
 .flap{position:relative;z-index:2;height:210mm;width:100mm;flex:none;padding:14mm;background:transparent;color:#fff}
-.flap h2{font-size:15pt;line-height:1.35;margin:0 0 10mm}
-.flap p{font-family:"Nanum Myeongjo",serif;font-size:11pt;line-height:1.65;margin:0}
-.flap .small{font-size:9pt;line-height:1.5;border-top:1px solid rgba(255,255,255,.5);padding-top:4mm;margin-top:36mm}
+.flap-card{height:182mm;border:.35mm solid rgba(22,174,207,.8);border-radius:3mm;padding:8mm 6mm;background:rgba(6,43,74,.48);position:relative}
+.flap .eyebrow{font-size:9pt;line-height:1.3;color:#9be7f3;letter-spacing:.03em}
+.flap .rule{height:.25mm;background:#16aeca;margin:3mm 0 4mm}
+.flap h2{font-family:"Nanum Gothic","Apple SD Gothic Neo",sans-serif;font-size:15pt;line-height:1.3;margin:0 0 7mm}
+.flap .label{font-size:8.5pt;color:rgba(255,255,255,.72);margin-bottom:2mm}
+.flap .quote{font-family:"BM Yeonsung","배달의민족 연성",sans-serif;font-size:20pt;line-height:1.3;margin:0 0 2mm}
+.flap .signal{display:block;width:100%;height:13mm;margin:0 0 4mm}
+.flap h3{font-family:"Nanum Gothic","Apple SD Gothic Neo",sans-serif;font-size:12pt;line-height:1.3;margin:0 0 3mm}
+.flap .challenge{font-family:"Nanum Myeongjo",serif;font-size:9.5pt;line-height:1.5;margin:0 0 7mm}
+.flap .slots{display:flex;gap:2mm;margin-top:0}
+.flap .slot{flex:1;text-align:center;color:#9be7f3;font-size:8pt}
+.flap .slot i{display:block;height:12mm;border:.3mm solid rgba(255,255,255,.82);border-radius:1mm;margin-top:1.5mm}
+.flap .hint{font-size:8pt;line-height:1.4;color:rgba(255,255,255,.78);margin-top:4mm}
+.flap .name-label{font-size:8.5pt;color:rgba(255,255,255,.74);margin-top:8mm}
+.flap .name-line{height:7mm;border-bottom:.3mm solid rgba(255,255,255,.85);margin-bottom:6mm}
+.flap .role-title{font-family:"Nanum Gothic","Apple SD Gothic Neo",sans-serif;font-size:10pt;margin:0 0 4mm}
+.flap .role{font-family:"Nanum Myeongjo",serif;font-size:9pt;line-height:1.65;margin:0}
+.flap .role span{display:inline-block;width:3mm;height:3mm;border:.3mm solid #fff;margin-right:2mm;vertical-align:middle}
+.flap .case-label{font-size:8pt;line-height:1.3;color:#9be7f3;margin-top:8mm;padding-top:4mm;border-top:1px solid rgba(255,255,255,.45)}
+.flap .case{font-family:"BM Yeonsung","배달의민족 연성",sans-serif;font-size:11pt;line-height:1.4;margin:2mm 0 0}
 .core{position:relative;z-index:2;width:311mm;height:210mm;flex:none;display:grid;grid-template-columns:148mm 15mm 148mm;overflow:hidden;background:transparent}
 .back,.spine,.front{position:relative;height:210mm;min-width:0}
 .back{padding:32mm 17mm 12mm;color:#fff}
@@ -33,10 +50,25 @@ body{font-family:"Nanum Gothic","Noto Sans CJK KR","Apple SD Gothic Neo",sans-se
 <body>
 <main class="spread">
   <section class="flap">
-    <h2>이 책을<br>펼치기 전에</h2>
-    <p>돌고래의 목소리는<br>누구에게 먼저 닿을까요?</p>
-    <p style="margin-top:7mm">AI · 수중 마이크 · 해녀 ·<br>바다 미스터리를 따라<br>곰새코지의 밤으로<br>함께 들어가 보세요.</p>
-    <p class="small">초등 5–6학년<br>과학 모험 동화</p>
+    <div class="flap-card">
+      <div class="eyebrow">곰새코지 · 수중음향 분석실</div>
+      <div class="rule"></div>
+      <h2>사건 기록 03:00</h2>
+      <div class="label">수신된 문장</div>
+      <div class="quote">“돌려줘.”</div>
+      <svg class="signal" viewBox="0 0 720 130" aria-hidden="true">
+        <path d="M0 65H720M0 20H720M0 110H720" fill="none" stroke="rgba(155,231,243,.38)" stroke-width="2"/>
+        <path d="M0 65h28l8-4 8 8 8-18 8 29 9-51 8 76 10-70 10 42 10-14 10 5h28l10-7 10 13 10-24 10 39 10-63 10 83 10-61 11 29 12-10h28l10-4 10 9 10-16 10 27 10-46 10 61 10-44 10 21 10-8h30l10-6 10 13 10-22 10 35 10-54 10 69 10-50 10 25 10-10h36l10-5 10 11 10-19 10 31 10-49 10 65 10-44 10 20 10-8h38" fill="none" stroke="#16aeca" stroke-width="5" stroke-linejoin="round"/>
+      </svg>
+      <h3>미션 01 · 파형 추적</h3>
+      <p class="challenge">같은 휘슬, 세 마이크!<br>도착 순서를 기록에서 밝혀라.</p>
+      <div class="slots">
+        <div class="slot">먼저<i></i></div>
+        <div class="slot">다음<i></i></div>
+        <div class="slot">마지막<i></i></div>
+      </div>
+      <div class="hint">힌트: 세 곳의 녹음을 비교해 봐.</div>
+    </div>
   </section>
   <div class="core">
     <section class="back">
@@ -58,11 +90,17 @@ body{font-family:"Nanum Gothic","Noto Sans CJK KR","Apple SD Gothic Neo",sans-se
     </section>
   </div>
   <section class="flap">
-    <h2>이 책의<br>탐사 키워드</h2>
-    <p>돌고래의 클릭음<br>수중 마이크 세 대<br>해녀의 바다 경험<br>AI 라벨과 시민 과학</p>
-    <div style="border-top:1px solid rgba(255,255,255,.45);margin:20mm 0 8mm"></div>
-    <h2 style="font-size:12pt">작가의 말</h2>
-    <p>바다의 소리를 자세히 들으면 과학과 상상이 만나는 순간이 찾아옵니다.</p>
+    <div class="flap-card">
+      <div class="eyebrow">곰새코지 바다탐사대</div>
+      <div class="rule"></div>
+      <h2>나의 탐사대원증</h2>
+      <div class="name-label">이름</div>
+      <div class="name-line"></div>
+      <div class="role-title">내가 맡을 임무를 골라 봐!</div>
+      <p class="role"><span></span>소리에 귀 기울이기<br><span></span>잘린 기록 찾아내기<br><span></span>바다의 단서 읽어내기</p>
+      <div class="case-label">첫 번째 사건</div>
+      <p class="case">“돌려줘.”라고 한 목소리의 주인을 찾아라!</p>
+    </div>
   </section>
 </main>
 </body>
